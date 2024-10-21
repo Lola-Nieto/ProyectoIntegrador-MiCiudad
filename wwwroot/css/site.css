@@ -21,3 +21,11 @@ footer {
   background-color: #f8f9fa;
   border-top: 1px solid #e9ecef;
 }
+.atras{
+  background-color: white;
+  color: #1F10E2;
+}
+.avanzar{
+  background-color: #1F10E2;
+  color: #E4E3E3;
+}

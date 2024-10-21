@@ -6,7 +6,7 @@
 }
 
 <div>
-<h1> LOG IN </h1> 
+<h1> Iniciar sesión </h1> 
 <form id="loginForm" asp-controller="Account" asp-action="Ingresar" method="post">
     <div>
         <label for="usuario">Usuario:</label>
@@ -18,9 +18,7 @@
         <input type="password" id="password" name="password" required />
     </div>
     <a href src="blank" > ¿Olvidó su contraseña? </a> 
-    <button class="btn btn-light" onclick="location.href='@Url.Action("RecuperarContraseña", "Account")'">¿Olvidó su contraseña?</button>
-
-    <h6> </h6> 
+    <h6 class="btn btn-light" onclick="location.href='@Url.Action("RecuperarContraseña", "Account")'>¿Olvidó su contraseña?</h6> 
   
 
     <!-- Botón que llama a la función de JavaScript para validar la contraseña -->
