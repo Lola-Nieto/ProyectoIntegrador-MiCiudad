@@ -6,9 +6,10 @@
 
 function ValidarLogIn(){
     const username = document.getElementById('usuario');
-    const password = document.getElementById('password');
+    const password = document.getElementById('contraseña');
     if(password.length != 8){
         let errorContraseña = document.getElementById('mostarError');
-        errorContraseña
+        errorContraseña.innerHTML("Su contraseña no tiene la cantidad la longitud indicada");
     }
+    // https://es.stackoverflow.com/questions/411752/como-puedo-enviar-formulario-tras-validar-con-javascript 
 }
