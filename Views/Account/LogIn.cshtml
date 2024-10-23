@@ -23,13 +23,12 @@
   
 
     !--Botón que llama a la función de JavaScript para validar la contraseña -->
-    <button type="button" onclick="ValidarLogIn()">Ingresar</button>
 </form>
 <div> 
 
 <div class="form-container">
         <h2 class="Titulo">INICIAR SESIÓN</h2>
-        <form action="#">
+        <form id="LogInForm" asp-controller="" asp-action="#" method="post">
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
 
@@ -39,11 +38,11 @@
 
             </p>  
 
-            <a class = "olvido"href="OlvidoContraseña.html">¿Olvidó su contrseña?</a>
+            <a class = "olvido" href="OlvidoContraseña.html">¿Olvidó su contrseña?</a>
 
             <div class="buttons">
-                <a href="Registrarse.html" class="atras">Crear Cuenta</a>
-                <button type="submit" class="siguiente">Siguiente</button>
+                <a href="Registro.cshtml" class="atras">Crear Cuenta</a>
+                    <button type="button" onclick="ValidarLogIn()"class="siguiente" >Ingresar</button>
             </div>
         </form>
     </div>
