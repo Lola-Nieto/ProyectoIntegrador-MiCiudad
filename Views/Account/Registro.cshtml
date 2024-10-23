@@ -1,3 +1,28 @@
 @{
     ViewData["Title"] = "Registrarse";
 }
+
+<div class="form-container">
+        <h2 class="Titulo">CREAR CUENTA</h2>
+        <form action="#">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="dni">DNI</label>
+            <input type="text" id="dni" name="dni" required>
+
+            <label for="email">Mail</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="calle">Domicilio</label>
+            <input type="text" id="calle" name="calle" required>
+
+            <div class="buttons">
+                <a href="LogIn.html" class="atras">Atrás</a>
+                <button type="submit" class="siguiente">Siguiente</button>
+            </div>
+        </form>
+    </div>
