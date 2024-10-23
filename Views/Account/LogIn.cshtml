@@ -16,12 +16,15 @@
     <div>
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" required />
+        <p id=""> </p> 
     </div>
     <a href src="blank" > ¿Olvidó su contraseña? </a> 
     <h6 class="btn btn-light" onclick="location.href='@Url.Action("RecuperarContraseña", "Account")'>¿Olvidó su contraseña?</h6> 
   
 
     <!-- Botón que llama a la función de JavaScript para validar la contraseña -->
-    <button type="button" onclick="Validar()">Ingresar</button>
+    <button type="button" onclick="ValidarLogIn()">Ingresar</button>
 </form>
 <div> 
+
+
