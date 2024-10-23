@@ -7,5 +7,8 @@
 function ValidarLogIn(){
     const username = document.getElementById('usuario');
     const password = document.getElementById('password');
-    
+    if(password.length != 8){
+        let errorContraseña = document.getElementById('mostarError');
+        errorContraseña
+    }
 }
