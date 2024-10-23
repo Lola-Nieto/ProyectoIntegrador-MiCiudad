@@ -5,7 +5,7 @@
 
 
 function ValidarLogIn(){
-    const username = documnet.getElementById('usuario');
+    const username = document.getElementById('usuario');
     const password = document.getElementById('password');
     
 }
