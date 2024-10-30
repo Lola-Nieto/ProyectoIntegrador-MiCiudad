@@ -9,7 +9,17 @@ public static class BD{
 private static string _connectionString = @"Server=localhost;Database=BD; Trusted_Connection=True";
 
 
-private static bool ChequearCuentaExiste(string usuario, string contraseña){
-
+public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresado){
+    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = pContraseña"; //If exists?
+    string usuarioTraido = String.Empty;
+    bool existe = false;
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+    
+    usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado, pContraseña = contraseñaIngresado}).ToString();
+    }
+    if(usuarioTraido != string.Empty){
+        existe = true;
+    }
+    return existe;
 }
 }

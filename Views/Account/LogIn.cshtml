@@ -2,35 +2,26 @@
 
 @{
     ViewData["Title"] = "Log In";
-
+    var Mensaje = ViewBag.MensajeError;
 }
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-</head>
 <body>
+
     <div class="form-container">
         <h2 class="Titulo">INICIAR SESIÓN</h2>
-        <form action="#">
+        <form asp-action="#" id="LogInForm" asp-controller="" method="post">
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
 
             <label for="contraseña">Contraseña</label>
             <input type="password" id="contraseña" name="contraseña" required>
-
-            <a class = "olvido"href="@Url.Action("OlvidePassword", "Home")">¿Olvidó su contrseña?</a>
+            <p id="mostrarError"> 
+            @mensaje
+            </p> 
+            <a class = "olvido"href="@Url.Action("OlvidePassword", "Account")">¿Olvidó su contrseña?</a>
 
             <div class="buttons">
-                <a href="@Url.Action("Registro", "Home")" class="atras">Crear Cuenta</a>
-                <button type="submit" class="siguiente">Siguiente</button>
+                <a href="@Url.Action("Registro", "Account")" class="atras">Crear Cuenta</a>
+                <button type="button" onclick="ValidarLogIn()" class="siguiente"> Siguiente </button>
             </div>
         </form>
     </div>
