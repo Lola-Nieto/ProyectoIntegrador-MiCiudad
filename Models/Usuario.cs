@@ -10,6 +10,6 @@ public class Usuario{
     public int Altura {get; set;}
     public string Mail {get; set; }
 
-
+    
 
 }
