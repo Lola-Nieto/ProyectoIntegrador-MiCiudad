@@ -22,11 +22,7 @@ public class Account : Controller {
         }
 
         
-        [HttpPost]
-        public ActionResult Ingresar(string usuario, string contraseña)
-        {
-               //mando todo a la base de datos
-        }
+      
 }
 
 
