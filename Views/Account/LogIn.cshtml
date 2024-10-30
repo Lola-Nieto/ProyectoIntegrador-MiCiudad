@@ -26,10 +26,10 @@
             <label for="contraseña">Contraseña</label>
             <input type="password" id="contraseña" name="contraseña" required>
 
-            <a class = "olvido"href="OlvidoContraseña.html">¿Olvidó su contrseña?</a>
+            <a class = "olvido"href="@Url.Action("OlvidePassword", "Home")">¿Olvidó su contrseña?</a>
 
             <div class="buttons">
-                <a href="Registrarse.html" class="atras">Crear Cuenta</a>
+                <a href="@Url.Action("Registro", "Home")" class="atras">Crear Cuenta</a>
                 <button type="submit" class="siguiente">Siguiente</button>
             </div>
         </form>
