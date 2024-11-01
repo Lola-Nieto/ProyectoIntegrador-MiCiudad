@@ -29,7 +29,7 @@ public class Account : Controller {
             return View();
         }
         [HttpPost] 
-             public ActionResult LogIn(string username, string password)
+             public ActionResult ValidacionLogIn(string username, string password)
         {
             
             string view = "LogIn";

@@ -8,7 +8,8 @@
 
     <div class="form-container">
         <h2 class="Titulo">INICIAR SESIÓN</h2>
-        <form asp-action="#" id="LogInForm" asp-controller="" method="post">
+        <form asp-action="#" id="LogInForm" asp-controller="" method="post" 
+        action='@Url.Action("ValidacionLogIn","Account")'>
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
 
@@ -21,7 +22,7 @@
 
             <div class="buttons">
                 <a href="@Url.Action("Registro", "Account")" class="atras">Crear Cuenta</a>
-                <button type="button" onclick="ValidarLogIn()" class="siguiente"> Siguiente </button>
+                <button type="submit" onclick="ValidarLogIn()" class="siguiente"> Siguiente </button>
             </div>
         </form>
     </div>

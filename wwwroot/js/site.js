@@ -7,6 +7,8 @@
 function ValidarLogIn(){
     const username = document.getElementById('usuario');
     const password = document.getElementById('contraseña');
+    let tieneMayus = !(password === password.toLowerCase());
+    let tieneMinus = ValidarMinus(password);
     if(password.length != 8){
         let errorContraseña = document.getElementById('mostarError');
         errorContraseña.innerHTML("Su contraseña no tiene los ocho caracteres necesarios");

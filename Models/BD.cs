@@ -23,3 +23,14 @@ public static bool ChequearCuentaExiste(string usuarioIngresado, string contrase
     return existe;
 }
 }
+
+public static string BuscarMail(string usuarioIngresado){
+    string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists?
+    string mailTraido = String.Empty;
+       using(SqlConnection db = new SqlConnection(_connectionString)){
+    
+    mailTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado}).ToString();
+       }
+    return mailTraido;
+
+       }
