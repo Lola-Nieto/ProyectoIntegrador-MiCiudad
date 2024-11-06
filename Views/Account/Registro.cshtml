@@ -14,7 +14,6 @@
             @Mensaje
             </p> 
 
-
             <label for="apellido">Apellido</label>
             <input type="text" id="apellido" name="apellido" required>
 
@@ -27,7 +26,6 @@
             <label for="calle">Domicilio</label>
             <input type="text" id="domicilio" name="domicilio" required>
             
-
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" placeholder="Escriba un nombre para que sus vecinos lo identifiquen" required>
 
@@ -37,9 +35,8 @@
             <label for="password2">Repetir contraseña</label>
             <input type="text" id="password2" name="password2" required>
             
-            
             <div class="buttons">
-                <a href="@Url.Action("LogIn", "Home")" class="atras">Atrás</a>
+                <a href='@Url.Action("LogIn", "Home")' class="atras">Atrás</a>
                 <button type="submit" onclick="ValidarRegistro()" class="siguiente">Siguiente</button>
             </div>
         </form>

@@ -1,4 +1,4 @@
-
+<html>
 
 @{
     ViewData["Title"] = "Log In - MiCiudad";
@@ -7,9 +7,8 @@
 <body>
 
     <div class="form-container">
-        <h2 class="Titulo">INICIAR SESIÓN</h2>
-        <form  id="LogInForm" method="post" 
-        action='@Url.Action("ValidacionLogIn","Account")'>
+        <h2 class="Titulo"> INICIAR SESIÓN  </h2>
+        <form  id="LogInForm" method="post"   action='@Url.Action("ValidacionLogIn","Account")'>
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
 
@@ -18,10 +17,10 @@
             <p id="mostrarError"> 
             @Mensaje
             </p> 
-            <a class = "olvido"href="@Url.Action("OlvidePassword", "Account")">¿Olvidó su contrseña?</a>
+            <a class = "olvido"href='@Url.Action("OlvidePassword", "Account")'>¿Olvidó su contrseña?</a>
 
             <div class="buttons">
-                <a href="@Url.Action("Registro", "Account")" class="atras">Crear Cuenta</a>
+                <a href = '@Url.Action("Registro", "Account")' class="atras">Crear Cuenta</a>
                 <button type="submit" onclick="ValidarLogIn()" class="siguiente"> Siguiente </button>
             </div>
         </form>
