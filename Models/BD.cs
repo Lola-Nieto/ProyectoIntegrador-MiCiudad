@@ -23,9 +23,7 @@ public static bool ChequearCuentaExiste(string usuarioIngresado, string contrase
     }
     return existe;
 }
-<<<<<<< HEAD
 
-=======
 public static void TraerDatosUsuario(string username){
     string SQL = "SELECT * FROM Usuario WHERE UserName = @pUsuario "; 
     using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -45,22 +43,16 @@ public static bool BuscarSiExiste(string username){
 }
 
 }
->>>>>>> 19b6ddb1a13e0494ec0a3de186e67ddb6fa29f1f
 
 public static string BuscarMail(string usuarioIngresado){
     string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists? Tira error sino?
     string mailTraido = String.Empty;
-       using(SqlConnection db = new SqlConnection(_connectionString)){
+    using(SqlConnection db = new SqlConnection(_connectionString)){
     
     mailTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado}).ToString();
        }
     return mailTraido;
 
        }
-<<<<<<< HEAD
 
 }
-=======
-}
-
->>>>>>> 19b6ddb1a13e0494ec0a3de186e67ddb6fa29f1f
