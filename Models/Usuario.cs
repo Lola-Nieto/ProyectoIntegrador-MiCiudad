@@ -22,8 +22,8 @@ public class Usuario{
         direccion.Trim().Split(" ");
 
     }
-    public void CrearUsuario(string usuario, string nombre, string apellido, int dni, string mail, string direccion, string contraseña){
-        Usuario nuevoVecino = new Usuario(usuario, contraseña, nombre, apellido, dni, direccion, mail);
+    public void CrearUsuario(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña){
+        Usuario nuevoVecino = new Usuario(usuario, contraseña, nombre, apellido, dni, calle, altura, mail);
     }
     
     public static string NumRandom(){

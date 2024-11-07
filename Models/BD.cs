@@ -7,17 +7,22 @@ using Microsoft.Extensions.ObjectPool;
 namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD{
-private static string _connectionString = @"Server=A-PHZ2-CIDI-43;Database=MiCiudad; Trusted_Connection=True";
+private static string _connectionString = @"Server=localhost;Database=MiCiudad; Trusted_Connection=True";
 
+public static void AgregarVecino(Usuario userAAgregar) {
+    string SQL = "INSERT Usuario(Nombre, Apellido, Contrasena, UserName, Altura, Calle, DNI, Mail) VALUES (pNombre, pApellido, pContrasena, pUsuario, pAltura, pCalle, pDNI, pMail)"; 
+     using(SqlConnection db = new SqlConnection(_connectionString)){
+    db.Execute(SQL, new{pUsuario = userAAgregar.UserName, pContrasena = userAAgregar.Contraseña, pNombre = userAAgregar.Nombre, pApellido = userAAgregar.Apellido, pDNI = userAAgregar.DNI, pMail = userAAgregar.Mail, pAltura = userAAgregar.Altura, pCalle = userAAgregar.Calle});
+    }
+}
 
 public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresado){
-    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = pContraseña"; //If exists?
+    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contrasena = pContraseña"; //If exists?
     string usuarioTraido = String.Empty;
     bool existe = false;
     using(SqlConnection db = new SqlConnection(_connectionString)){
     
-    usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado, pContraseña = contraseñaIngresado}).ToString();
-    }
+    usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado, pContraseña = contraseñaIngresado}).ToString();    }
     if(usuarioTraido != string.Empty){
         existe = true;
     }

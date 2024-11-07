@@ -23,13 +23,13 @@ public class Account : Controller {
             return View();
         }
     [HttpPost] 
-    public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string direccion, string contraseña)
+    public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
             string view = "Bienvenida";
             bool ExisteElUsuario = BD.BuscarSiExiste(usuario);
-            if(!ExisteElUsuario){
-                // BD.AgregarVecino();
-                //Usuario nuevo = Usuario.CrearUsuario(usuario, nombre, apellido, dni, mail, direccion, contraseña); //Para qué creo un nuevo usuario? Hay que hacerlo?
+            if(!ExisteElUsuario){;
+                Usuario nuevo = Usuario.CrearUsuario(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
+                BD.AgregarVecino();
             }else{
                 view = "Registro";
                 ViewBag.Error = "Este nombre de usuario no está disponible";
