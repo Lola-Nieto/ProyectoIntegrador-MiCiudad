@@ -145,8 +145,8 @@ nav {
   margin-top: 80px; 
 }
 
-footer{
-color: white;
-display: flex;
-justify-content: flex-end;
+.footer{
+  color: white;
+  display: flex;
+  justify-content: end;
 }
