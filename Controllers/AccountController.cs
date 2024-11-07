@@ -16,7 +16,7 @@ public class Account : Controller {
 
     public IActionResult Index()
     {
-        return View();
+        return View("LogIn");
     }
      public ActionResult Registro()
         {
