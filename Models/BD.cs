@@ -16,13 +16,13 @@ public static void AgregarVecino(Usuario userAAgregar) {
     }
 }
 
-public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresado){
-    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contrasena = pContraseña"; //If exists?
+public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresada){
+    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = pContraseña"; 
     string usuarioTraido = String.Empty;
     bool existe = false;
     using(SqlConnection db = new SqlConnection(_connectionString)){
     
-    usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado, pContraseña = contraseñaIngresado}).ToString();    }
+    usuarioTraido = db.QueryFirstOrDefault(SQL, new{pUsuario = usuarioIngresado, pContraseña = contraseñaIngresada}).ToString();    }
     if(usuarioTraido != string.Empty){
         existe = true;
     }
@@ -40,7 +40,7 @@ public static Usuario TraerDatosUsuario(string username){
 public static bool BuscarSiExiste(string username){
     string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario "; 
     using(SqlConnection db = new SqlConnection(_connectionString)){
-    string usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = username}).ToString();
+    string usuarioTraido = db.QueryFirstOrDefault(SQL, new{pUsuario = username}).ToString();
     bool ret = false;
     if(usuarioTraido != null){
         ret = true;
@@ -55,7 +55,7 @@ public static string BuscarMail(string usuarioIngresado){
     string mailTraido = String.Empty;
     using(SqlConnection db = new SqlConnection(_connectionString)){
     
-    mailTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado}).ToString();
+    mailTraido = db.QueryFirstOrDefault(SQL, new{pUsuario = usuarioIngresado}).ToString();
        }
     return mailTraido;
 

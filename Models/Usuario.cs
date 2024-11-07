@@ -10,9 +10,6 @@ public class Usuario{
     public int Altura {get; set;}
     public string Mail {get; set; }
 
-    public Usuario (){
-
-    }
     private Usuario(string username, string contraseña, string nombre, string apellido, int dni, string calle, int altura, string mail){
         UserName = username;
         Contraseña = contraseña;
