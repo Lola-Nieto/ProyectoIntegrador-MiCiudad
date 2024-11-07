@@ -33,7 +33,7 @@ public static Usuario TraerDatosUsuario(string username){
     string SQL = "SELECT * FROM Usuario WHERE UserName = @pUsuario "; 
     Usuario usuarioTraido = null;
     using(SqlConnection db = new SqlConnection(_connectionString)){
-    usuarioTraido = DB.QueryFirstOrDefault<Usuario>(SQL, new{pUsuario = username}); 
+    usuarioTraido = db.QueryFirstOrDefault<Usuario>(SQL, new{pUsuario = username}); 
     return usuarioTraido;
 }
 }

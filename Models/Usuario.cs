@@ -2,7 +2,7 @@ namespace ProyectoIntegrador_MiCiudad.Models;
 
 public class Usuario{
     public string UserName {get; set; }
-    private string Contraseña { get; set; }
+    public string Contraseña { get; set; }
     public string Nombre {get; set; }
     public string Apellido {get; set; }
     public int DNI {get; set;}
@@ -13,17 +13,19 @@ public class Usuario{
     public Usuario (){
 
     }
-    private Usuario(string username, string contraseña, string nombre, string apellido, int dni, string direccion, string mail){
+    private Usuario(string username, string contraseña, string nombre, string apellido, int dni, string calle, int altura, string mail){
         UserName = username;
         Contraseña = contraseña;
         Nombre = nombre;
         Apellido = apellido;
         DNI = dni;
-        direccion.Trim().Split(" ");
-
+        Mail = mail;
+        Calle = calle; 
+        Altura = altura;
     }
-    public void CrearUsuario(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña){
+    public static void CrearUsuarioYAgregar(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña){
         Usuario nuevoVecino = new Usuario(usuario, contraseña, nombre, apellido, dni, calle, altura, mail);
+        BD.AgregarVecino(nuevoVecino);
     }
     
     public static string NumRandom(){

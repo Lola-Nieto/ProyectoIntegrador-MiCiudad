@@ -28,8 +28,8 @@ public class Account : Controller {
             string view = "Bienvenida";
             bool ExisteElUsuario = BD.BuscarSiExiste(usuario);
             if(!ExisteElUsuario){;
-                Usuario nuevo = Usuario.CrearUsuario(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
-                BD.AgregarVecino();
+                Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
+                
             }else{
                 view = "Registro";
                 ViewBag.Error = "Este nombre de usuario no está disponible";
