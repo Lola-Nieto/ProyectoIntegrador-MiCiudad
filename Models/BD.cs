@@ -22,7 +22,7 @@ public static bool ChequearCuentaExiste(string usuarioIngresado, string contrase
     }
     return existe;
 }
-}
+
 
 public static string BuscarMail(string usuarioIngresado){
     string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists?
@@ -34,3 +34,5 @@ public static string BuscarMail(string usuarioIngresado){
     return mailTraido;
 
        }
+
+}
