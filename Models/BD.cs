@@ -24,11 +24,12 @@ public static bool ChequearCuentaExiste(string usuarioIngresado, string contrase
     return existe;
 }
 
-public static void TraerDatosUsuario(string username){
+public static Usuario TraerDatosUsuario(string username){
     string SQL = "SELECT * FROM Usuario WHERE UserName = @pUsuario "; 
+    Usuario usuarioTraido = null;
     using(SqlConnection db = new SqlConnection(_connectionString)){
-    //Usuario usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = username}); //Cómo convierto el tipo de dato a usuario?
-    //return usuarioTraido;
+    usuarioTraido = DB.QueryFirstOrDefault<Usuario>(SQL, new{pUsuario = username}); 
+    return usuarioTraido;
 }
 }
 public static bool BuscarSiExiste(string username){
