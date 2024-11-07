@@ -1,6 +1,7 @@
 using System.Data.SqlClient;
 using Dapper;
 using System.Collections.Generic;
+using Microsoft.Extensions.ObjectPool;
 
 
 namespace ProyectoIntegrador_MiCiudad.Models;
@@ -22,10 +23,32 @@ public static bool ChequearCuentaExiste(string usuarioIngresado, string contrase
     }
     return existe;
 }
+<<<<<<< HEAD
 
+=======
+public static void TraerDatosUsuario(string username){
+    string SQL = "SELECT * FROM Usuario WHERE UserName = @pUsuario "; 
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+    //Usuario usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = username}); //Cómo convierto el tipo de dato a usuario?
+    //return usuarioTraido;
+}
+}
+public static bool BuscarSiExiste(string username){
+    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario "; 
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+    string usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = username}).ToString();
+    bool ret = false;
+    if(usuarioTraido != null){
+        ret = true;
+    } 
+    return ret;
+}
+
+}
+>>>>>>> 19b6ddb1a13e0494ec0a3de186e67ddb6fa29f1f
 
 public static string BuscarMail(string usuarioIngresado){
-    string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists?
+    string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists? Tira error sino?
     string mailTraido = String.Empty;
        using(SqlConnection db = new SqlConnection(_connectionString)){
     
@@ -34,5 +57,10 @@ public static string BuscarMail(string usuarioIngresado){
     return mailTraido;
 
        }
+<<<<<<< HEAD
 
 }
+=======
+}
+
+>>>>>>> 19b6ddb1a13e0494ec0a3de186e67ddb6fa29f1f

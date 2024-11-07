@@ -1,12 +1,18 @@
 @{
-    ViewData["Title"] = "Registrarse";
+    ViewData["Title"] = "Crear Cuenta - MiCiudad";
+    var Mensaje = ViewBag.Error;
 }
 
 <div class="form-container">
         <h2 class="Titulo">CREAR CUENTA</h2>
-        <form action="#">
+        <form method="post" 
+        action='@Url.Action("RegistroValidacion","Account")'>
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required>
+
+            <p id="mostrarError"> 
+            @Mensaje
+            </p> 
 
             <label for="apellido">Apellido</label>
             <input type="text" id="apellido" name="apellido" required>
@@ -18,11 +24,20 @@
             <input type="email" id="email" name="email" required>
 
             <label for="calle">Domicilio</label>
-            <input type="text" id="calle" name="calle" required>
+            <input type="text" id="domicilio" name="domicilio" required>
+            
+            <label for="usuario">Usuario</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Escriba un nombre para que sus vecinos lo identifiquen" required>
 
+            <label for="password1">Contraseña</label>
+            <input type="text" id="contraseña" name="contraseña" required>
+
+            <label for="password2">Repetir contraseña</label>
+            <input type="text" id="password2" name="password2" required>
+            
             <div class="buttons">
-                <a href="@Url.Action("LogIn", "Home")" class="atras">Atrás</a>
-                <button type="submit" class="siguiente">Siguiente</button>
+                <a href='@Url.Action("LogIn", "Home")' class="atras">Atrás</a>
+                <button type="submit" onclick="ValidarRegistro()" class="siguiente">Siguiente</button>
             </div>
         </form>
     </div>
