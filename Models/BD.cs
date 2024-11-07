@@ -7,7 +7,7 @@ using Microsoft.Extensions.ObjectPool;
 namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD{
-private static string _connectionString = @"Server=localhost;Database=BD; Trusted_Connection=True";
+private static string _connectionString = @"Server=A-PHZ2-CIDI-43;Database=MiCiudad; Trusted_Connection=True";
 
 
 public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresado){

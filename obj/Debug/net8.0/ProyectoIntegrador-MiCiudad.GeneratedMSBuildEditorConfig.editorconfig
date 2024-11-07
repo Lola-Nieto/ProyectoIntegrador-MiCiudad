@@ -18,10 +18,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = Z:\ProyectoIntegrador-MiCiudad-2
 build_property._RazorSourceGeneratorDebug = 
 
-[Z:/ProyectoIntegrador-MiCiudad-2/Views/Account/Bienvenida.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxCaWVudmVuaWRhLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [Z:/ProyectoIntegrador-MiCiudad-2/Views/Account/LogIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,8 +30,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/ProyectoIntegrador-MiCiudad-2/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[Z:/ProyectoIntegrador-MiCiudad-2/Views/Home/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [Z:/ProyectoIntegrador-MiCiudad-2/Views/Shared/_Layout.cshtml]

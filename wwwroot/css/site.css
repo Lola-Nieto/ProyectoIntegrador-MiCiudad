@@ -126,7 +126,7 @@ nav {
   font-weight: bold;
 }
 
-.login-btn {
+.logInBtn{
   background-color: #1F10E2;
   color: white;
   border: none;
@@ -134,12 +134,19 @@ nav {
   cursor: pointer;
   border-radius: 5px;
   font-size: 16px;
+  text-decoration: none;
 }
 
-.login-btn:hover {
+.logInBtn:hover {
   background-color: #150ABF;
 }
 
 .content {
   margin-top: 80px; 
+}
+
+footer{
+color: white;
+display: flex;
+justify-content: flex-end;
 }
