@@ -11,7 +11,7 @@ private static string _connectionString = @"Server=localhost;Database=BD; Truste
 
 
 public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresado){
-    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = pContraseña"; //If exists?
+    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = pContraseña"; 
     string usuarioTraido = String.Empty;
     bool existe = false;
     using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -24,13 +24,16 @@ public static bool ChequearCuentaExiste(string usuarioIngresado, string contrase
     return existe;
 }
 
-public static void TraerDatosUsuario(string username){
+public static Usuario TraerDatosUsuario(string username){
+    Usuario usuarioTraido = new Usuario();
     string SQL = "SELECT * FROM Usuario WHERE UserName = @pUsuario "; 
     using(SqlConnection db = new SqlConnection(_connectionString)){
-    //Usuario usuarioTraido = db.Query<Usuario>(SQL, new{pUsuario = username}); //Cómo convierto el tipo de dato a usuario?
-    //return usuarioTraido;
+    usuarioTraido = db.QueryFirstOrDefault<Usuario>(SQL, new{pUsuario = username}); //Cómo convierto el tipo de dato a usuario?
+    
 }
+return usuarioTraido;
 }
+
 public static bool BuscarSiExiste(string username){
     string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario "; 
     using(SqlConnection db = new SqlConnection(_connectionString)){
@@ -45,7 +48,7 @@ public static bool BuscarSiExiste(string username){
 }
 
 public static string BuscarMail(string usuarioIngresado){
-    string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists? Tira error sino?
+    string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; 
     string mailTraido = String.Empty;
     using(SqlConnection db = new SqlConnection(_connectionString)){
     
