@@ -46,12 +46,12 @@ public static bool BuscarSiExiste(string username){
 public static string BuscarMail(string usuarioIngresado){
     string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists? Tira error sino?
     string mailTraido = String.Empty;
-       using(SqlConnection db = new SqlConnection(_connectionString)){
+    using(SqlConnection db = new SqlConnection(_connectionString)){
     
     mailTraido = db.Query<Usuario>(SQL, new{pUsuario = usuarioIngresado}).ToString();
        }
     return mailTraido;
 
-       }
+    }
 }
 
