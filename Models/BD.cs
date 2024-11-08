@@ -17,7 +17,7 @@ public static void AgregarVecino(Usuario userAAgregar) {
 }
 
 public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresada){
-    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = pContraseña"; 
+    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = @pContraseña"; 
     string usuarioTraido = String.Empty;
     bool existe = false;
     using(SqlConnection db = new SqlConnection(_connectionString)){
