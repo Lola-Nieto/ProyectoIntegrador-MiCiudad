@@ -6,7 +6,7 @@
 <div class="form-container">
         <h2 class="Titulo">CREAR CUENTA</h2>
         <form method="post" 
-        action='@Url.Action("RegistroValidacion","Account")'>
+        action='@Url.Action("RegistroValidacion","Account")' onsubmit="return ValidarRegistro()">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required>
 
@@ -42,7 +42,7 @@
             
             <div class="buttons">
                 <a href='@Url.Action("LogIn", "Account")' class="atras">Atrás</a>
-                <button type="submit" onclick="ValidarRegistro()" class="siguiente">Siguiente</button>
+                <button type="submit" class="siguiente">Siguiente</button>
             </div>
         </form>
     </div>

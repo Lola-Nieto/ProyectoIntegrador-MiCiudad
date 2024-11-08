@@ -65,11 +65,11 @@ public class Account : Controller {
             return View("Bienvenida");
         }
         [HttpPost] 
-             public ActionResult ValidacionLogIn(string username, string password)
+             public ActionResult ValidacionLogIn(string usuario, string contraseña)
         {
             
             string view = "LogIn";
-            bool verificar = BD.ChequearCuentaExiste(username, password);
+            bool verificar = BD.ChequearCuentaExiste(usuario, contraseña);
             if(verificar){
                 view = "Bienvenida";
                 ViewBag.MensajeCodigo = "Ingrese el siguiente número: ";

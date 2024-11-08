@@ -2,9 +2,7 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-function ValidarLogIn(){
-    return UsuarioYContraseña();
-}
+
 function ValidarRegistro(){
     UsuarioYContraseña();
     ContraseñasCoinciden();
@@ -19,6 +17,7 @@ function ContraseñasCoinciden(){
 }
 
 function UsuarioYContraseña(){
+    alert ("ENTRE A UsuarioYContraseña");
     const username = document.getElementById('usuario');
     const password = document.getElementById('contraseña');
     let tieneMayus = ValidarMayus(password);

@@ -23,7 +23,7 @@ public static bool ChequearCuentaExiste(string usuarioIngresado, string contrase
     using(SqlConnection db = new SqlConnection(_connectionString)){
     
     usuarioTraido = db.QueryFirstOrDefault(SQL, new{pUsuario = usuarioIngresado, pContraseña = contraseñaIngresada}).ToString();    }
-    if(usuarioTraido != null){
+    if(usuarioTraido != null){ //Cannot  perform on null reference
         existe = true;
     }
     return existe;
