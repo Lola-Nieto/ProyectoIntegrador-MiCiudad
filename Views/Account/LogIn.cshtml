@@ -8,7 +8,7 @@
 
     <div class="form-container">
         <h2 class="Titulo"> INICIAR SESIÓN  </h2>
-        <form  id="LogInForm" method="post"   action='@Url.Action("ValidacionLogIn","Account")'>
+        <form  id="LogInForm" method="post"  onsubmit="ValidarLogIn()" action='@Url.Action("ValidacionLogIn","Account")'>
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
 
@@ -21,7 +21,7 @@
 
             <div class="buttons">
                 <a href = '@Url.Action("Registro", "Account")' class="atras">Crear Cuenta</a>
-                <button type="submit" onclick="ValidarLogIn()" class="siguiente"> Siguiente </button>
+                <button type="submit"  class="siguiente"> Siguiente </button>
             </div>
         </form>
     </div>

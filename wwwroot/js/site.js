@@ -22,20 +22,24 @@ function UsuarioYContraseña(){
     const username = document.getElementById('usuario');
     const password = document.getElementById('contraseña');
     let tieneMayus = ValidarMayus(password);
-    let tieneMinus = ValidarMinus();
+    let tieneMinus = ValidarMinus(password);
     let tiene8Min = ValidarExtension(password);
+    let ret = false;
     if(tiene8Min && tieneMinus && tieneMayus){
         document.getElementById('loginForm').submit(); //Hay que poner esto o se envia directo?
         //Si hay que ponerlo habria que poner en la instruccion de arriba una varible para que se pueda llamar desde != funciones
+        ret = true;
         
     }else{
         let errorContraseña = document.getElementById('mostarError');
         errorContraseña.innerHTML("Su contraseña no cumple con los requisitos necesarios (al menos 8 digitos, 1 mayúscula y 1 minúscula)");
+        
     }
     if(ValidarUsuario()){ //Es necesario?
         let errorUsuario = document.getElementById('mostarError');
         errorUsuario.innerHTML("Usuario no completado");
     }
+    return ret;
     // https://es.stackoverflow.com/questions/411752/como-puedo-enviar-formulario-tras-validar-con-javascript 
 }
 
