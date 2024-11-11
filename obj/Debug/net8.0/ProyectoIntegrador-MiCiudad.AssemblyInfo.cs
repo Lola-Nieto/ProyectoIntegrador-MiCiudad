@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProyectoIntegrador-MiCiudad")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f8a281ec3579eab8700334da17d09708382bb40")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a488c1cbd7e565f4d99e8bdf8a39997b105beb2c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProyectoIntegrador-MiCiudad")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProyectoIntegrador-MiCiudad")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

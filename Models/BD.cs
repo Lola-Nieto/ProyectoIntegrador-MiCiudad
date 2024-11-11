@@ -17,13 +17,13 @@ public static void AgregarVecino(Usuario userAAgregar) {
 }
 
 public static bool ChequearCuentaExiste(string usuarioIngresado, string contraseñaIngresada){
-    string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = @pContraseña"; 
+    string SQL = "IF EXISTS (SELECT UserName FROM Usuario WHERE UserName = @pUsuario AND Contraseña = @pContraseña) BEGIN return 1 END"; //Cómo hago que devuelva el usuario?
     string usuarioTraido = String.Empty;
     bool existe = false;
     using(SqlConnection db = new SqlConnection(_connectionString)){
     
     usuarioTraido = db.QueryFirstOrDefault(SQL, new{pUsuario = usuarioIngresado, pContraseña = contraseñaIngresada}).ToString();    }
-    if(usuarioTraido != null){ //Cannot  perform on null reference
+    if(usuarioTraido != null){ //Cannot perform on null reference
         existe = true;
     }
     return existe;
