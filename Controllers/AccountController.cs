@@ -60,8 +60,7 @@ public class Account : Controller {
         [HttpPost] 
          public ActionResult ValidacionOlvidePasswordCod(string username)
         {
-            //Usuario vecino = BD.TraerDatosUsuario(username);
-            BD.TraerDatosUsuario(username);
+            Usuario vecino = BD.TraerDatosUsuarioSoloUsername(username);
             return View("Bienvenida");
         }
         [HttpPost] 
@@ -69,11 +68,9 @@ public class Account : Controller {
         {
             
             string view = "LogIn";
-            bool verificar = BD.ChequearCuentaExiste(usuario, contraseña);
-            if(verificar){
+            Usuario usuarioTraido = BD.TraerDatosUsuario(usuario, contraseña);
+            if(usuarioTraido != null){
                 view = "Bienvenida";
-                ViewBag.MensajeCodigo = "Ingrese el siguiente número: ";
-                ViewBag.MensajeCodigo += Usuario.NumRandom();
             }else{
                 ViewBag.MensajeError = "Usuario y/o contraseña incorrectos";
             }
