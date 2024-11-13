@@ -7,7 +7,7 @@ using Microsoft.Extensions.ObjectPool;
 namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD{
-private static string _connectionString = @"Server=localhost;Database=MiCiudad; Trusted_Connection=True";
+private static string _connectionString = @"Server=A-PHZ2-CEO-10;Database=MiCiudad; Trusted_Connection=True";
 
 public static void AgregarVecino(Usuario userAAgregar) {
     string SQL = "INSERT Usuario(Nombre, Apellido, Contraseña, UserName, Altura, Calle, DNI, Mail) VALUES (@pNombre, @pApellido, @pContrasena, @pUsuario, @pAltura, @pCalle, @pDNI, @pMail)"; 

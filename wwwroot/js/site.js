@@ -48,6 +48,9 @@ function ValidarUsuario(username){
     if(username.trim() != ""){
          bool = true;
     }
+    else {
+        //Que mando por get element by id mensaje de que hay que ingresar algo
+    }
     return bool;
 }
 
