@@ -1,152 +1,137 @@
+/* Reset básico */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
 body {
-  background-color: #050E4B;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background-color: #0A1128;
+  color: #333;
 }
 
-.form-container {
-  background-color: #E6E6E6;
-  padding: 40px;
-  border-radius: 10px;
-  width: 500px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.Titulo{
-  text-align: center;
-  color: #1F10E2;
-  margin-bottom: 20px;
-  font-family: "Inter", sans-serif;
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #20376B;
-  
-}
-
-input[type="text"], input[type="email"], input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 25px; 
-  border: none;
-  border-radius: 10px;
-  background-color: #050E4B;
-  color: #fff;
-}
-
-input[type="text"]:focus, input[type="email"], input[type="password"]:focus {
-  outline: none;
-}
-
-.buttons {
+/* Navbar */
+nav {
+  background-color: #f0f0f0; /* Blanco grisáceo */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 50px;
 }
 
-.atras {
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 40px; /* Espacio entre elementos de la navbar */
+}
+
+nav ul li a {
+  color: #0A1128;
+  font-size: 1.1rem;
   text-decoration: none;
-  color: #1F10E2;
   font-weight: bold;
 }
 
-.siguiente {
-  background-color: #1F10E2;
+.login-btn {
+  background-color: #00A4FF;
   color: #fff;
   border: none;
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: larger;
+  font-weight: bold;
 }
 
-.siguiente:hover {
-  background-color: #0D0A94;
-}
-.olvido{
-  text-decoration: none;
-  color: #1F10E2;
+.logo {
+  height: 40px;
 }
 
-
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-nav {
-  background-color: #EDEDED;
-  padding: 15px 20px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 2px -2px gray;
-}
-
-.navbar-container {
+/* Hero */
+.hero {
+  background: linear-gradient(180deg, #00A4FF, #0073e6);
+  padding: 40px 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.navbar-logo {
-  width: 50px;
+.hero-logo {
+  max-width: 70%;
   height: auto;
 }
 
-.navbar-menu {
-  list-style: none;
+/* Info Cards */
+.info {
   display: flex;
+  justify-content: center;
   gap: 20px;
-  margin-right: 50px; 
+  padding: 40px;
+  background-color: #0A1128;
 }
 
-.navbar-menu li a {
-  color: #1F10E2;
-  text-decoration: none;
-  font-weight: bold;
+.card {
+  background-color: #f0f0f0; /* Blanco grisáceo */
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  width: 250px;
+  color: #333;
 }
 
-.logInBtn{
-  background-color: #1F10E2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  text-decoration: none;
+.card h3 {
+  font-size: 1.5rem;
+  color: #0A1128;
+  margin-bottom: 10px;
 }
 
-.logInBtn:hover {
-  background-color: #150ABF;
+.card ul {
+  list-style: none; /* Sin puntos en la lista */
+  padding: 0;
 }
 
-.content {
-  margin-top: 80px; 
+.card li {
+  margin: 5px 0;
 }
 
-.footer{
-  color: white;
+/* Map Section */
+.map {
   display: flex;
-  justify-content: end;
+  justify-content: center;
+  padding: 20px;
+  background-color: #e9e9e9;
+}
+
+/* Services Section */
+.services {
+  background-color: #0A1128;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.services h2 {
+  color: #00FF7F; /* Verde clarito */
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.services-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.services-links a {
+  color: #00FF7F; /* Verde clarito */
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  background-color: #0A1128;
+  text-align: center;
+  padding: 20px;
+  color: #f0f0f0;
+  font-size: 0.9rem;
 }
