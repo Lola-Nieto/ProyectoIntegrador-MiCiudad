@@ -5,8 +5,10 @@
 
 function ValidarRegistro(){
     alert("Hola");
-    UsuarioYContraseña();
+    let usercontra = UsuarioYContraseña();
     ContraseñasCoinciden();
+    
+    return usercontra;
 }
 function ContraseñasCoinciden(){
     alert("Hola"); 
@@ -61,8 +63,8 @@ function ValidarUsuario(username){
         type: 'GET', 
         dataType: 'json', 
         success: function(response){
-            $(#parte2).visibility = 'visible'; 
-            $(#parte1).visibility = 'hidden';
+            $("#parte2").visibility = 'visible'; 
+            $("#parte1").visibility = 'hidden';
 
         }
         //Si no es exitosa, que muestre mensaje de error - cómo pner eso
