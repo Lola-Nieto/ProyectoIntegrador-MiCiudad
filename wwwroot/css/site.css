@@ -10,8 +10,21 @@ body {
   background-color: #0A1128;
   color: #333;
 }
-
+/*
+form {
+  background-color: #050E4B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+*/
 /* Navbar */
+.formu{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 nav {
   background-color: #f0f0f0; /* Blanco grisáceo */
   display: flex;
@@ -134,4 +147,83 @@ footer {
   padding: 20px;
   color: #f0f0f0;
   font-size: 0.9rem;
+}
+.logInBtn{
+  background-color: #1F10E2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.logInBtn:hover {
+  background-color: #150ABF;
+}
+.form-container {
+  background-color: #E6E6E6;
+  padding: 40px;
+  border-radius: 10px;
+  width: 500px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.Titulo{
+  text-align: center;
+  color: #1F10E2;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #20376B;
+  
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 25px; 
+  border: none;
+  border-radius: 10px;
+  background-color: #050E4B;
+  color: #fff;
+}
+
+input[type="text"]:focus, input[type="email"], input[type="password"]:focus {
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.atras {
+  text-decoration: none;
+  color: #1F10E2;
+  font-weight: bold;
+}
+
+.siguiente {
+  background-color: #1F10E2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.siguiente:hover {
+  background-color: #0D0A94;
+}
+.olvido{
+  text-decoration: none;
+  color: #1F10E2;
 }

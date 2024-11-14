@@ -2,9 +2,11 @@
     ViewData["Title"] = "Crear Cuenta - MiCiudad";
     var Mensaje = ViewBag.Error;
 }
+<div class="formu"> 
 
 <div class="form-container">
         <h2 class="Titulo">CREAR CUENTA</h2>
+
         <form method="post" 
         action='@Url.Action("RegistroValidacion","Account")' onsubmit="return ValidarRegistro()">
             <label for="nombre">Nombre</label>
@@ -45,4 +47,5 @@
                 <button type="submit" class="siguiente">Siguiente</button>
             </div>
         </form>
+        </div>
     </div>

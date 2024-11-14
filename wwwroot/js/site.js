@@ -50,6 +50,7 @@ function ValidarUsuario(username){
     }
     else {
         //Que mando por get element by id mensaje de que hay que ingresar algo
+        document.getElementById('OlvidePassForm').submit();
     }
     return bool;
 }
