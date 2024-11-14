@@ -25,7 +25,7 @@ public class Account : Controller {
     [HttpPost] 
     public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
-            string view = "Bienvenida";
+            string view = "Index";
             bool ExisteElUsuario = BD.BuscarSiExiste(usuario);
             if(!ExisteElUsuario){;
                 Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
@@ -45,17 +45,17 @@ public class Account : Controller {
             return View();
         }
         [HttpPost] 
-         public ActionResult ValidacionOlvidePassword(string username)
+         public bool ExisteUsuario(string Username)
         {
-            string mail = BD.BuscarMail(username);
-            string view = "OlvidePassword";
-            if(mail != null){
-                view = "Bienvenida";
-            }
-            else{
+            string mail = BD.BuscarMail(Username);
+            bool ret = true; 
+            if(mail == null){
                 ViewBag.MensajeError = "Usuario no encontrado";
+                ret = false;
+            } else{
+                ViewBag.MensajeCodigo = Usuario.NumRandom(); 
             }
-            return View(view);
+            return ret;
         }
         [HttpPost] 
          public ActionResult ValidacionOlvidePasswordCod(string username)

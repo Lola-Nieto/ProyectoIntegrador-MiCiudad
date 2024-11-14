@@ -4,10 +4,12 @@
 // Write your JavaScript code.
 
 function ValidarRegistro(){
+    alert("Hola");
     UsuarioYContraseña();
     ContraseñasCoinciden();
 }
 function ContraseñasCoinciden(){
+    alert("Hola"); 
     const password = document.getElementById('contraseña');
     const passRepe = document.getElementById('password2');
     if(!(password === passRepe)){
@@ -17,7 +19,7 @@ function ContraseñasCoinciden(){
 }
 
 function UsuarioYContraseña(){
-    alert ("ENTRE A UsuarioYContraseña");
+    alert ("ENTRE A UsuarioYContraseña");f
     const username = document.getElementById('usuario');
     const password = document.getElementById('contraseña');
     let tieneMayus = ValidarMayus(password);
@@ -43,6 +45,8 @@ function UsuarioYContraseña(){
 }
 
 function ValidarUsuario(username){
+
+    alert("Hola");
     const username = document.getElementById('usuario');
     let bool = false;
     if(username.trim() != ""){
@@ -50,15 +54,26 @@ function ValidarUsuario(username){
     }
     else {
         //Que mando por get element by id mensaje de que hay que ingresar algo
-        document.getElementById('OlvidePassForm').submit();
     }
-    return bool;
+    $.ajax({
+        url: 'Account/ExisteUsuario', 
+        data: {Username : username}, 
+        type: 'GET', 
+        dataType: 'json', 
+        success: function(response){
+            $(#parte2).visibility = 'visible'; 
+            $(#parte1).visibility = 'hidden';
+
+        }
+        //Si no es exitosa, que muestre mensaje de error - cómo pner eso
+    });
 }
 
 function ValidarCodigo(){
     const codigoIngresado = document.getElementById('codigoIngresado');
     const codigoGenerado = document.getElementById('codigoGenerado');
-    return (codigoIngresado === codigoGenerado);
+    if(codigoIngresado == codigoGenerado){
+            document.getElementById('OlvidePassForm').submit();
+    }
 
-    
 }
