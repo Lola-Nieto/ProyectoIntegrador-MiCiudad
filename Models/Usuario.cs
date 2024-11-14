@@ -57,9 +57,9 @@ public class Usuario{
         BD.AgregarVecino(nuevoVecino);
     }
     
-    public static string NumRandom(){
+    public static int NumRandom(){
         Random rnd = new Random();
     int randomNumber = rnd.Next(100,1000);
-    return Convert.ToString(randomNumber);
+    return randomNumber;
     }
 }

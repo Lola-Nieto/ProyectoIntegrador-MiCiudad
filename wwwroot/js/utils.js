@@ -6,10 +6,10 @@ function mostrar(obj){
     document.getElementById('obj').style.display = 'block';
     }
 function ValidarMayus(password){
-    return (!(password === password.toUpperCase()));
+    return (!(password === password.toLowerCase()));
 }
 function ValidarMinus(password){
-    return (!(password === password.toLowerCase()));
+    return (!(password === password.toUpperCase()));
 }
 function ValidarExtension(password){
     return (password.length >= 8);

@@ -1,6 +1,5 @@
 @{
     ViewData["Title"] = "Crear Cuenta - MiCiudad";
-    var Mensaje = ViewBag.Error;
 }
 <div class="formu"> 
 <button onclick="ValidarRegistro()">boton</button>
@@ -11,10 +10,6 @@
         action='@Url.Action("RegistroValidacion","Account")' onsubmit="return ValidarRegistro()">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required>
-
-            <p id="mostrarError"> 
-            @Mensaje
-            </p> 
 
             <label for="apellido">Apellido</label>
             <input type="text" id="apellido" name="apellido" required>
@@ -34,7 +29,7 @@
             
             <h3> Cuenta </h3> 
             <label for="usuario">Usuario</label>
-            <input type="text" id="usuario" name="usuario" placeholder="Escriba un nombre para que sus vecinos lo identifiquen" required>
+            <input type="text" id="usuario" name="usuario" placeholder="Escriba un nombre para que sus vecinos lo identifiquen" required >
 
             <label for="password1">Contraseña</label>
             <input type="password" id="contraseña" name="contraseña" required>
@@ -42,6 +37,10 @@
             <label for="password2">Repetir contraseña</label>
             <input type="password" id="password2" name="password2" required>
             
+            <p id="mostrarError"> 
+            
+            </p> 
+
             <div class="buttons">
                 <a href='@Url.Action("LogIn", "Account")' class="atras">Atrás</a>
                 <input type="submit" class="siguiente" value="siguiente">
@@ -49,3 +48,4 @@
         </form>
         </div>
     </div>
+

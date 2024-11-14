@@ -25,16 +25,8 @@ public class Account : Controller {
     [HttpPost] 
     public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
-            string view = "Index";
-            bool ExisteElUsuario = BD.BuscarSiExiste(usuario);
-            if(!ExisteElUsuario){;
-                Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
-                
-            }else{
-                view = "Registro";
-                ViewBag.Error = "Este nombre de usuario no está disponible";
-            }
-            return View(view);
+            Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
+            return View("Index");
         }
           public ActionResult LogIn()
         {
@@ -44,16 +36,22 @@ public class Account : Controller {
         {
             return View();
         }
-        [HttpPost] 
-         public bool ExisteUsuario(string Username)
+        [HttpGet] 
+         public int ExisteUsuarioOvidePass(string Username)
         {
             string mail = BD.BuscarMail(Username);
-            bool ret = true; 
-            if(mail == null){
-                ViewBag.MensajeError = "Usuario no encontrado";
-                ret = false;
-            } else{
-                ViewBag.MensajeCodigo = Usuario.NumRandom(); 
+            int ret = -1; 
+            if(mail == ""){
+                ret = Usuario.NumRandom(); 
+            }
+            return ret;
+        }
+         public bool ExisteUsuarioRegistro(string Username)
+        {
+            string mail = BD.BuscarMail(Username);
+            bool ret = false; 
+            if(mail == ""){
+                ret = true; 
             }
             return ret;
         }

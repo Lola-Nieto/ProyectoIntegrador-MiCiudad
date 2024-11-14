@@ -6,17 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Mi Ciudad</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
 </head>
 
 <body>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     
     <header> 
     <nav>
-            <img src="@Url.Content("~/img/logo.png")" alt="Logo" class="logo"/>
+            <img src='@Url.Content("~/img/logo.png")' alt="Logo" class="logo"/>
             <ul>
                 <li><a href="#">Chats</a></li>
                 <li><a href="#">Servicios</a></li>
@@ -34,7 +31,10 @@
         &copy; @DateTime.Now.Year - MiCiudad
     </footer>
 
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/utils.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 
 </html>

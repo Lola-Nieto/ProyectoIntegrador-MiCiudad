@@ -3,73 +3,89 @@
 
 // Write your JavaScript code.
 
-function ValidarRegistro(){
-    alert("Hola");
-    let usercontra = UsuarioYContraseña();
-    ContraseñasCoinciden();
-    
-    return usercontra;
-}
-function ContraseñasCoinciden(){
-    alert("Hola"); 
-    const password = document.getElementById('contraseña');
-    const passRepe = document.getElementById('password2');
-    if(!(password === passRepe)){
-        let error = document.getElementById('mostrarError');
-        error.innerHTML("Las contraseñas no coinciden");
+function ValidarRegistro()
+{
+    let usercontra = ValidarContraseña();
+    let coinciden = ContraseñasCoinciden();
+    let userexistente = ValidarExistenciaUsuario(); //Mandar el parámetro
+    if(userexiste){
+        let errorUsuario = document.getElementById('mostrarError');
+    errorUsuario.innerHTML ="Usuario ya está tomado";
     }
+    return usercontra && coinciden && !userexistente;
 }
 
-function UsuarioYContraseña(){
-    alert ("ENTRE A UsuarioYContraseña");f
-    const username = document.getElementById('usuario');
-    const password = document.getElementById('contraseña');
+
+function ContraseñasCoinciden()
+{
+    let ret=true;
+    const password = document.getElementById('contraseña').value;
+    const passRepe = document.getElementById('password2').value;
+    if(!(password === passRepe)){
+        let error = document.getElementById('mostrarError');
+        error.innerHTML="Las contraseñas no coinciden";
+        ret=false;
+    }
+    return ret;
+}
+
+function ValidarContraseña()
+{
+    let ret = false;
+
+    const username = document.getElementById('usuario').value;
+    const password = document.getElementById('contraseña').value;
+    console.log(password);
     let tieneMayus = ValidarMayus(password);
     let tieneMinus = ValidarMinus(password);
     let tiene8Min = ValidarExtension(password);
-    let ret = false;
+    
     if(tiene8Min && tieneMinus && tieneMayus){
-        document.getElementById('loginForm').submit(); //Hay que poner esto o se envia directo?
-        //Si hay que ponerlo habria que poner en la instruccion de arriba una varible para que se pueda llamar desde != funciones
         ret = true;
-        
     }else{
-        let errorContraseña = document.getElementById('mostarError');
-        errorContraseña.innerHTML("Su contraseña no cumple con los requisitos necesarios (al menos 8 digitos, 1 mayúscula y 1 minúscula)");
-        
+        let errorContraseña = document.getElementById('mostrarError');
+        errorContraseña.innerHTML ="Su contraseña no cumple con los requisitos necesarios (al menos 8 digitos, 1 mayúscula y 1 minúscula)";
     }
-    if(ValidarUsuario()){ //Es necesario?
-        let errorUsuario = document.getElementById('mostarError');
-        errorUsuario.innerHTML("Usuario no completado");
-    }
+
     return ret;
     // https://es.stackoverflow.com/questions/411752/como-puedo-enviar-formulario-tras-validar-con-javascript 
 }
 
-function ValidarUsuario(username){
-
-    alert("Hola");
-    const username = document.getElementById('usuario');
-    let bool = false;
-    if(username.trim() != ""){
-         bool = true;
+function ValidarExistenciaUsuario(username){
+    let ret = false; 
+    let usuario = username.value;
+    if(ValidarUsuarioEscrito()){
+        $.ajax({
+            url: '/Account/ExisteUsuarioRegistro', 
+            data: {Username : usuario}, 
+            type: 'GET', 
+            dataType: 'json', 
+            success: function(response){
+                    ret = response;   
+            }
+            
+        });
     }
-    else {
-        //Que mando por get element by id mensaje de que hay que ingresar algo
-    }
-    $.ajax({
-        url: 'Account/ExisteUsuario', 
-        data: {Username : username}, 
-        type: 'GET', 
-        dataType: 'json', 
-        success: function(response){
-            $("#parte2").visibility = 'visible'; 
-            $("#parte1").visibility = 'hidden';
-
-        }
-        //Si no es exitosa, que muestre mensaje de error - cómo pner eso
-    });
+    return ret;
+ }
+function ValidarUsuarioOlvidePass(usuario){
+return ValidarExistenciaUsuario(username);
 }
+function ValidarUsuarioEscrito(username){
+    let ret = true;
+    if(username.trim() == ""){
+         ret = false;
+         let errorUsuario = document.getElementById('mostrarError');
+         errorUsuario.innerHTML = "El ingreso de usuario es requerido";
+    }
+    return ret;
+}
+    
+ 
+   
+        //Si no es exitosa, que muestre mensaje de error - cómo pner eso
+        
+  
 
 function ValidarCodigo(){
     const codigoIngresado = document.getElementById('codigoIngresado');
@@ -79,3 +95,5 @@ function ValidarCodigo(){
     }
 
 }
+
+
