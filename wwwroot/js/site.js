@@ -97,14 +97,30 @@ function ValidarCodigo(){
 
 }
 
-function ValidarExistenciaUsuarioYContra(username){
-    
+function ValidarExistenciaUsuarioYContra(username, password){
+    let ret = false; 
+    let usuario = username.value;
+    if(ValidarUsuarioEscrito()){
+        $.ajax({
+            url: '/Account/ValidacionLogIn', 
+            data: {usuario : username , contraseña : password}, 
+            type: 'GET', 
+            dataType: 'json', 
+            success: function(response){
+                    ret = response;   
+            }
+            
+        });
+    }
 }
+
 
 function ValidarLogIn(){
     let username = document.getElementById('usuario').value;
-    let existeUsuario = ValidarExistenciaUsuarioYContra(username);
+    let password = document.getElementById('contraseña').value;
+    let existeUsuario = ValidarExistenciaUsuarioYContra(username, password);
     if(!existeUsuario){
-
+        let errorUsuario = document.getElementById('mostrarError');
+        errorUsuario.innerHTML ="Usuario y/o contraseña icorrectos";
     }
 }
