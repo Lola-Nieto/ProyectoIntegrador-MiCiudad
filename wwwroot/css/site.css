@@ -36,18 +36,21 @@ nav {
 nav ul {
   display: flex;
   list-style: none;
-  gap: 40px; /* Espacio entre elementos de la navbar */
+  gap: 40px; 
 }
 
 nav ul li a {
-  color: #0A1128;
+  color: #1F10E2;
   font-size: 1.1rem;
   text-decoration: none;
   font-weight: bold;
 }
+nav ul li a:hover {
+  color: #150ABF; 
+}
 
 .login-btn {
-  background-color: #00A4FF;
+  background-color: #1F10E2;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -55,10 +58,16 @@ nav ul li a {
   cursor: pointer;
   font-weight: bold;
 }
+.login-btn:hover {
+  background-color: #150ABF;
+  transition: 0.3s;
+}
 
 .logo {
   height: 40px;
 }
+
+/*Se cierra navbar */
 
 /* Hero */
 .hero {
@@ -73,17 +82,17 @@ nav ul li a {
   height: auto;
 }
 
-/* Info Cards */
+/* Cartas */
 .info {
   display: flex;
   justify-content: center;
   gap: 20px;
   padding: 40px;
-  background-color: #0A1128;
+  background-color: #050E4B;
 }
 
 .card {
-  background-color: #f0f0f0; /* Blanco grisáceo */
+  background-color: #f0f0f0; 
   border-radius: 10px;
   padding: 20px;
   text-align: center;
@@ -98,7 +107,7 @@ nav ul li a {
 }
 
 .card ul {
-  list-style: none; /* Sin puntos en la lista */
+  list-style: none; 
   padding: 0;
 }
 
@@ -116,13 +125,13 @@ nav ul li a {
 
 /* Services Section */
 .services {
-  background-color: #0A1128;
+  background-color: #050E4B ;
   text-align: center;
   padding: 40px 20px;
 }
 
 .services h2 {
-  color: #00FF7F; /* Verde clarito */
+  color: #45EF11; 
   font-size: 2rem;
   margin-bottom: 20px;
 }
@@ -135,7 +144,7 @@ nav ul li a {
 }
 
 .services-links a {
-  color: #00FF7F; /* Verde clarito */
+  color: #45EF11; 
   font-size: 1.1rem;
   text-decoration: none;
 }
@@ -148,20 +157,7 @@ footer {
   color: #f0f0f0;
   font-size: 0.9rem;
 }
-.logInBtn{
-  background-color: #1F10E2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  text-decoration: none;
-}
 
-.logInBtn:hover {
-  background-color: #150ABF;
-}
 .form-container {
   background-color: #E6E6E6;
   padding: 40px;

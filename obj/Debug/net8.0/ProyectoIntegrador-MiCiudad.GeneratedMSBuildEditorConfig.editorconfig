@@ -9,43 +9,47 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ProyectoIntegrador-MiCiudad
 build_property.RootNamespace = ProyectoIntegrador-MiCiudad
-build_property.ProjectDir = Z:\INFO\Programación\Hackaton\ProyectoIntegrador-MiCiudad\
+build_property.ProjectDir = z:\ProyectoIntegrador-MiCiudad-4\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = Z:\INFO\Programación\Hackaton\ProyectoIntegrador-MiCiudad
+build_property.MSBuildProjectDirectory = z:\ProyectoIntegrador-MiCiudad-4
 build_property._RazorSourceGeneratorDebug = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/Account/LogIn.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/Account/LogIn.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/Account/OlvidePassword.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/Account/OlvidePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxPbHZpZGVQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/Account/Registro.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/Account/Registro.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Ryby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/Home/Index.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/Shared/_Layout.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/Home/Servicios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNpb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[z:/ProyectoIntegrador-MiCiudad-4/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/Shared/_ValidationScriptsPartial.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/_ViewImports.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/INFO/Programación/Hackaton/ProyectoIntegrador-MiCiudad/Views/_ViewStart.cshtml]
+[z:/ProyectoIntegrador-MiCiudad-4/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
