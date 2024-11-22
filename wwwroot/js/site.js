@@ -7,7 +7,8 @@ function ValidarRegistro()
 {
     let usercontra = ValidarContraseña();
     let coinciden = ContraseñasCoinciden();
-    let userexistente = ValidarExistenciaUsuario(); //Mandar el parámetro
+    let username = document.getElementById('usuario').value;
+    let userexistente = ValidarExistenciaUsuario(username); //Mandar el parámetro
     if(userexiste){
         let errorUsuario = document.getElementById('mostrarError');
     errorUsuario.innerHTML ="Usuario ya está tomado";
@@ -96,4 +97,14 @@ function ValidarCodigo(){
 
 }
 
+function ValidarExistenciaUsuarioYContra(username){
+    
+}
 
+function ValidarLogIn(){
+    let username = document.getElementById('usuario').value;
+    let existeUsuario = ValidarExistenciaUsuarioYContra(username);
+    if(!existeUsuario){
+
+    }
+}

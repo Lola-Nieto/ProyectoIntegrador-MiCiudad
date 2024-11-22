@@ -62,7 +62,17 @@ public class Account : Controller {
             return View("Bienvenida");
         }
         [HttpPost] 
-             public ActionResult ValidacionLogIn(string usuario, string contraseña)
+             public bool ValidacionLogIn(string usuario, string contraseña)
+        {
+            bool ret = false;
+            Usuario usuarioTraido = BD.TraerDatosUsuario(usuario, contraseña);
+            if(usuarioTraido != null){
+                ret = true;
+            }
+            return ret;
+        }
+        /*
+         public ActionResult ValidacionLogIn(string usuario, string contraseña)
         {
             
             string view = "LogIn";
@@ -74,7 +84,7 @@ public class Account : Controller {
             }
             return View(view);
         }
-
+        */
 }
 
 

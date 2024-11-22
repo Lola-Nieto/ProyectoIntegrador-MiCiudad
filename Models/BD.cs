@@ -57,7 +57,7 @@ public static bool BuscarSiExiste(string username){
         ret = true;
     } 
     return ret;
-}
+} //Para qué si la búsqueda para registro la hace con el mail?
 
 }
 

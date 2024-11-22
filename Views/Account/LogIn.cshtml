@@ -14,7 +14,7 @@
     <div class="form-container">
         <h2 class="Titulo"> INICIAR SESIÓN  </h2>
        <div class="formu">
-        <form  id="LogInForm" method="post" action='@Url.Action("ValidacionLogIn","Account")' >
+        <form  id="LogInForm" method="post" action='@Url.Action("ValidacionLogIn","Account")' onsubmit='return ValidarLogIn'>
          
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>
