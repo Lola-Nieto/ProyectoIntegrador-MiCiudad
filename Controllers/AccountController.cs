@@ -71,6 +71,11 @@ public class Account : Controller {
             }
             return ret;
         }
+        [HttpPost] 
+        public ActionResult TraerDatos(string usuario, string contraseña){
+            Usuario usuarioLogeado = TraerDatosUsuario(usuario, contraseña)
+            //Tendría que crear un usuario nuevo? Podría acerlo en la validación y luego mandar directo al index
+        } //CÓMO HACER QUE CAMBIE LA BARRA?
         /*
          public ActionResult ValidacionLogIn(string usuario, string contraseña)
         {
