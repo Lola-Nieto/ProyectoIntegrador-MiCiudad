@@ -36,6 +36,15 @@ public class Account : Controller {
         {
             return View();
         }
+        public ActionResult MiCuenta(){
+            ViewBag.DatosUsuario = UsuarioLogeado;
+            return View();
+        }
+        public IActionResult Logout()
+        {
+        HttpContext.Session.Remove("user");
+        return RedirectToAction("Index");
+        }
         [HttpGet] 
          public int ExisteUsuarioOvidePass(string Username)
         {
@@ -50,7 +59,7 @@ public class Account : Controller {
         {
             string mail = BD.BuscarMail(Username);
             bool ret = false; 
-            if(mail == ""){
+            if(mail != ""){
                 ret = true; 
             }
             return ret;
@@ -65,19 +74,21 @@ public class Account : Controller {
              public bool ValidacionLogIn(string usuario, string contraseña)
         {
             bool ret = false;
-            Usuario usuarioTraido = BD.TraerDatosUsuario(usuario, contraseña);
-            if(usuarioTraido != null){
+            Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña); //Esto se guarda?
+            if(usuarioLogeado != null){
                 ret = true;
             }
             return ret;
         }
+        
         [HttpPost] 
         public ActionResult TraerDatos(string usuario, string contraseña){
-            Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña);
-            //Crear el usuario a partir de los datos traídos - HttpContext.Session.SetString("user", new Usuario(email, password).ToString());
-            //Tendría que crear un usuario nuevo? Podría acerlo en la validación y luego mandar directo al index
+            //Usuario usuarioLogeado = new Usuario();
+            //Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña); --> si se guarda en el de arriba no
+            HttpContext.Session.SetString("user", new UsuarioLogeado(usuario, contraseña).ToString());
+            //Tendría que crear un usuario nuevo? Podría hacerlo en la validación y luego mandar directo al index
         } 
-
+        
         public bool EstaLogeado(){
             bool ret = false;
             if(HttpContext.Session.GetString("user") != null){

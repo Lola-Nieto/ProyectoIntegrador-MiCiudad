@@ -66,6 +66,11 @@ function ValidarExistenciaUsuario(username){
             }
             
         });
+        if(ret){
+            document.getElementById('parte2').style.visibility = "visible";
+            document.getElementById('parte1').style.visibility = "hidden";
+            mensajeB.style.color = (pass===pass.toLowerCase() ? "red" : "green");   
+        }
     }
     return ret;
  }
@@ -81,20 +86,20 @@ function ValidarUsuarioEscrito(username){
     }
     return ret;
 }
-    
- 
-   
-        //Si no es exitosa, que muestre mensaje de error - cómo pner eso
-        
-  
 
 function ValidarCodigo(){
     const codigoIngresado = document.getElementById('codigoIngresado');
     const codigoGenerado = document.getElementById('codigoGenerado');
+    let ret = false;
     if(codigoIngresado == codigoGenerado){
             document.getElementById('OlvidePassForm').submit();
-    }
+            ret = true;
+    }else{
+        let errorCod = document.getElementById('mostrarError');
+        errorCod.innerHTML ="Código incorrecto";
 
+    }
+    return ret;
 }
 
 function ValidarExistenciaUsuarioYContra(username, password){
@@ -112,6 +117,7 @@ function ValidarExistenciaUsuarioYContra(username, password){
             
         });
     }
+    return ret;
 }
 
 
@@ -119,8 +125,10 @@ function ValidarLogIn(){
     let username = document.getElementById('usuario').value;
     let password = document.getElementById('contraseña').value;
     let existeUsuario = ValidarExistenciaUsuarioYContra(username, password);
+    
     if(!existeUsuario){
         let errorUsuario = document.getElementById('mostrarError');
-        errorUsuario.innerHTML ="Usuario y/o contraseña icorrectos";
+        errorUsuario.innerHTML ="Usuario y/o contraseña incorrectos";
     }
+    return existeUsuario;
 }

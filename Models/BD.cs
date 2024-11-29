@@ -68,7 +68,7 @@ public static string BuscarMail(string usuarioIngresado){
     {
         mailTraido = db.QueryFirstOrDefault<string>(SQL, new{pUsuario = usuarioIngresado});
     }
-    return mailTraido;
+    return mailTraido; //Devuelve "" si no lo encuentra?
 }
 
 }

@@ -21,8 +21,14 @@
                 <li><a href="#">Reportes</a></li>
                 <li><a href="#">Calendario</a></li>
             </ul>
-            @if()
-            <a class="login-btn" href='@Url.Action("LogIn", "Account")'>Iniciar Sesión</a>
+            @if(HttpContext.Session.GetString("user") != null){
+                <a class="login-btn" href='@Url.Action("MiCuenta", "Account")'>MiCuenta</a>
+            }else{
+                <a class="login-btn" href='@Url.Action("LogIn", "Account")'>Iniciar Sesión</a>
+            }
+            
+             
+            
         </nav>
         </header>
          <main role="main">
