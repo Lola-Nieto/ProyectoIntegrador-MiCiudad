@@ -56,6 +56,10 @@ public class Usuario{
         Usuario nuevoVecino = new Usuario(usuario, contraseña, nombre, apellido, dni, calle, altura, mail);
         BD.AgregarVecino(nuevoVecino);
     }
+    public static void CrearUsuario(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña){
+        Usuario nuevoVecino = new Usuario(usuario, contraseña, nombre, apellido, dni, calle, altura, mail);
+        BD.AgregarVecino(nuevoVecino);
+    } //Así?
     
     public static int NumRandom(){
         Random rnd = new Random();

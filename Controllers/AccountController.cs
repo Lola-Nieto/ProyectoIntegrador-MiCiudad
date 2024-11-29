@@ -73,9 +73,18 @@ public class Account : Controller {
         }
         [HttpPost] 
         public ActionResult TraerDatos(string usuario, string contraseña){
-            Usuario usuarioLogeado = TraerDatosUsuario(usuario, contraseña)
+            Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña);
+            //Crear el usuario a partir de los datos traídos - HttpContext.Session.SetString("user", new Usuario(email, password).ToString());
             //Tendría que crear un usuario nuevo? Podría acerlo en la validación y luego mandar directo al index
-        } //CÓMO HACER QUE CAMBIE LA BARRA?
+        } 
+
+        public bool EstaLogeado(){
+            bool ret = false;
+            if(HttpContext.Session.GetString("user") != null){
+                ret = true;
+            }
+            return ret;
+        }//CÓMO HACER QUE CAMBIE LA BARRA? Tengo que llamar a función? Cuándo? Si no pasa por el controller para mostrarlo 
         /*
          public ActionResult ValidacionLogIn(string usuario, string contraseña)
         {
