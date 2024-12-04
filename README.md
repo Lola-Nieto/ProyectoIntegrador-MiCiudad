@@ -7,3 +7,5 @@ https://www.twilio.com/en-us/blog/distribute-sessions-in-aspdotnet-core#:~:text=
 - Pasa por el js (porque tira el error con las contraseñas), pero no reconoce lo del dni ni usuario repetido --> puede ser en parte pq no abre la BD, pero el primer error no lo tira en la función donde llama eso, sino en agregar vecino
 - Cambio en la navbar una vez logueado
 - Botón de siguiente en olvide contraseña no hace nada (no si es que llama al js, este último no está haciendo lo que debería hacer)
+
+Falta crear el usuario en el olvide contraseña 
