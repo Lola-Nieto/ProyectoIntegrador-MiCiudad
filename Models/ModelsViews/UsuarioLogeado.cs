@@ -1,7 +1,10 @@
+namespace ProyectoIntegrador_MiCiudad.Models.ModelsViews;
 using System.Text.Json;
 
+
+
 [Serializable]
-public class Usuario(string email, string password)
+public class UsuarioLogueado(string email, string password)
 {
     public string? Email { get; set; } = email;
     public string? Password { get; set; } = password;
@@ -11,13 +14,13 @@ public class Usuario(string email, string password)
         return JsonSerializer.Serialize(this);
     }
 
-    public static Usuario? FromString(string? json)
+    public static UsuarioLogueado? FromString(string? json)
     {
         if (json is null)
         {
             return null;
         }
 
-        return JsonSerializer.Deserialize<Usuario>(json);
+        return JsonSerializer.Deserialize<UsuarioLogueado>(json);
     }
 }
