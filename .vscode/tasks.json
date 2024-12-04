@@ -7,9 +7,9 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/ProyectoIntegrador-MiCiudad.csproj",
+                "${workspaceFolder}/ProyectoIntegrador-MiCiudad.sln",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -19,9 +19,9 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/ProyectoIntegrador-MiCiudad.csproj",
+                "${workspaceFolder}/ProyectoIntegrador-MiCiudad.sln",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/ProyectoIntegrador-MiCiudad.csproj"
+                "${workspaceFolder}/ProyectoIntegrador-MiCiudad.sln"
             ],
             "problemMatcher": "$msCompile"
         }

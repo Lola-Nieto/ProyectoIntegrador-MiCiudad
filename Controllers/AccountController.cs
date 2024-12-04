@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ObjectPool;
 using ProyectoIntegrador_MiCiudad.Models;
 
+
 namespace ProyectoIntegrador_MiCiudad.Controllers;
 
 public class Account : Controller {
@@ -14,12 +15,15 @@ public class Account : Controller {
         _logger = logger;
     }
 
+<<<<<<< HEAD
     public IActionResult Index()
     {
         var reciboSesion = TempData["Sesion"] as string;
         TempData["Sesion"] = reciboSesion;
         return View("LogIn");
     }
+=======
+>>>>>>> c3ece475caaa384a42a664a48e4e779166b98562
      public ActionResult Registro()
         {
             return View();
@@ -28,7 +32,7 @@ public class Account : Controller {
     public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
             Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
-            return View("Index");
+            return View("Index", "Home");
         }
           public ActionResult LogIn()
         {
@@ -47,7 +51,7 @@ public class Account : Controller {
         public IActionResult Logout()
         {
         HttpContext.Session.Remove("user");
-        return RedirectToAction("Index");
+        return RedirectToAction("Index", "Home");
         }
         [HttpGet] 
          public int ExisteUsuarioOvidePass(string Username)
@@ -72,7 +76,7 @@ public class Account : Controller {
          public ActionResult ValidacionOlvidePasswordCod(string username)
         {
             Usuario vecino = BD.TraerDatosUsuarioSoloUsername(username);
-            return View("Index");
+            return View("Index", "Home");
         }
         [HttpPost] 
              public bool ValidacionLogIn(string usuario, string contraseña)
@@ -88,7 +92,7 @@ public class Account : Controller {
         [HttpPost] 
         public ActionResult TraerDatos(string usuario, string contraseña){
             TempData["Sesion"] = HttpContext.Session.SetString("user", new UsuarioLogeado(usuario, contraseña).ToString());
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         } 
         
         public bool EstaLogeado(){
@@ -97,7 +101,6 @@ public class Account : Controller {
                 ret = true;
             }
             return ret;
-        }//CÓMO HACER QUE CAMBIE LA BARRA? Tengo que llamar a función? Cuándo? Si no pasa por el controller para mostrarlo 
         /*
          public ActionResult ValidacionLogIn(string usuario, string contraseña)
         {
@@ -112,7 +115,8 @@ public class Account : Controller {
             return View(view);
         }
         */
-}
+        }   
+    }
 
 
 
