@@ -52,9 +52,10 @@ public class Usuario{
         IdGrupoBarrio = idGrupoBarrio;
 
     }
-    public static void CrearUsuarioYAgregar(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña){
+    public static Usuario CrearUsuarioYAgregar(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña){
         Usuario nuevoVecino = new Usuario(usuario, contraseña, nombre, apellido, dni, calle, altura, mail);
         BD.AgregarVecino(nuevoVecino);
+        return nuevoVecino;
     }
     public static void CrearUsuario(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña){
         Usuario nuevoVecino = new Usuario(usuario, contraseña, nombre, apellido, dni, calle, altura, mail);

@@ -24,7 +24,7 @@ public class Account : Controller {
     [HttpPost] 
     public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
-            Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
+            TempData["Usuario"] = Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);   
             return RedirectToAction("Index", "Home"); 
         }
           public ActionResult LogIn()
@@ -36,8 +36,8 @@ public class Account : Controller {
             return View();
         }
         public ActionResult MiCuenta(){
-            var reciboSesion = TempData["Sesion"] as string;
-            TempData["Sesion"] = reciboSesion;
+             var reciboUsuario = TempData["Usuario"] as Usuario;
+            TempData["Usuario"] = reciboUsuario;   
             return View();
         }
         public IActionResult Logout()
@@ -68,6 +68,7 @@ public class Account : Controller {
          public ActionResult ValidacionOlvidePasswordCod(string username)
         {
             Usuario vecino = BD.TraerDatosUsuarioSoloUsername(username);
+
             return View("Index", "Home");
         }
         [HttpPost] 
@@ -90,6 +91,7 @@ public class Account : Controller {
         public ActionResult TraerDatos(string username, string password){
             UsuarioLogueado uLogueado = new UsuarioLogueado(username, password);
             string ulog = uLogueado.ToString();
+            TempData["Usuario"] = BD.TraerDatosUsuario(username, password);
              HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home");
         } 
