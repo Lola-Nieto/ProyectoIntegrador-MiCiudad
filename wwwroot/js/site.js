@@ -8,12 +8,33 @@ function ValidarRegistro()
     let usercontra = ValidarContraseña();
     let coinciden = ContraseñasCoinciden();
     let username = document.getElementById('usuario').value;
-    let userexistente = ValidarExistenciaUsuario(username); //Mandar el parámetro
-    if(userexiste){
+    let usertomado = ValidarExistenciaUsuario(username); //Mandar el parámetro
+    let dni = document.getElementById('dni').value;
+    let clienteExistente = ValidarPersonaNueva(dni);
+    if(clienteExistente){
+        let errorUsuario = document.getElementById('mostrarError');
+        errorUsuario.innerHTML ="Ya hay una cuenta registrada con este documento";
+    }
+     if(usertomado){
         let errorUsuario = document.getElementById('mostrarError');
     errorUsuario.innerHTML ="Usuario ya está tomado";
     }
-    return usercontra && coinciden && !userexistente;
+    return usercontra && coinciden && !usertomado && !clienteExistente;
+}
+
+function ValidarPersonaNueva(dni){
+    
+        $.ajax({
+            url: '/Account/ExisteClienteRegistro', 
+            data: {Dni : dni}, 
+            type: 'GET', 
+            dataType: 'json', 
+            success: function(response){
+                    ret = response;   
+            }
+            
+        });
+        return ret;
 }
 
 
@@ -77,6 +98,7 @@ function ValidarExistenciaUsuario(username){
 function ValidarUsuarioOlvidePass(usuario){
 return ValidarExistenciaUsuario(username);
 }
+
 function ValidarUsuarioEscrito(username){
     let ret = true;
     if(username.trim() == ""){

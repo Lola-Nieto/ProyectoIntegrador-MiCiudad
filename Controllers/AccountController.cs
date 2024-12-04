@@ -80,10 +80,15 @@ public class Account : Controller {
             }
             return ret;
         }
+
+        public bool ExisteClienteRegistro(int Dni){
+            bool existe = BD.ChequearExistenciaCliente(Dni);
+            return existe;
+        }
         
         [HttpPost] 
-        public ActionResult TraerDatos(string usuario, string contraseña){
-            TempData["Sesion"] = HttpContext.Session.SetString("user", new UsuarioLogueado(usuario, contraseña).ToString());
+        public ActionResult TraerDatos(string username, string password){
+            TempData["Sesion"] = HttpContext.Session.SetString("user", new UsuarioLogueado(username, password).ToString());
             return RedirectToAction("Index", "Home");
         } 
         

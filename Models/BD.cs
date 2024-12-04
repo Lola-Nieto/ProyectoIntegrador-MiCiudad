@@ -7,11 +7,12 @@ using Microsoft.Extensions.ObjectPool;
 namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD{
-private static string _connectionString = @"Server=A-PHZ2-LUM-07;Database=MiCiudad; Trusted_Connection=True";
+private static string _connectionString = @"Server=A-PHZ2-CEO-12;Database=MiCiudad; Trusted_Connection=True";
+
 
 public static void AgregarVecino(Usuario userAAgregar) {
     string SQL = "INSERT Usuario(Nombre, Apellido, Contraseña, UserName, Altura, Calle, DNI, Mail) VALUES (@pNombre, @pApellido, @pContrasena, @pUsuario, @pAltura, @pCalle, @pDNI, @pMail)"; 
-     using(SqlConnection db = new SqlConnection(_connectionString)){
+    using(SqlConnection db = new SqlConnection(_connectionString)){
     db.Execute(SQL, new{pUsuario = userAAgregar.UserName, pContrasena = userAAgregar.Contraseña, pNombre = userAAgregar.Nombre, pApellido = userAAgregar.Apellido, pDNI = userAAgregar.DNI, pMail = userAAgregar.Mail, pAltura = userAAgregar.Altura, pCalle = userAAgregar.Calle});
     }
 }
@@ -61,6 +62,17 @@ public static bool BuscarSiExiste(string username){
 
 }
 
+public static bool ChequearExistenciaCliente(int dni){
+    string SQL = "SELECT UserName FROM Usuario WHERE DNI = @pDocumento "; 
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+    string usuarioTraido = db.QueryFirstOrDefault(SQL, new{pDocumento = dni}).ToString();
+    bool ret = false;
+    if(usuarioTraido != null){
+        ret = true;
+    } 
+    return ret;
+}
+}
 public static string BuscarMail(string usuarioIngresado){
     string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists? Tira error sino?
     string mailTraido = "";

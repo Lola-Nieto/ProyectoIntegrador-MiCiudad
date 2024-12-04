@@ -230,4 +230,7 @@ input[type="text"]:focus, input[type="email"], input[type="password"]:focus {
   text-decoration: none;
   color: #1F10E2;
 }
+#mostrarError{
+  color:red;
+}
 

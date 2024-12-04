@@ -3,11 +3,11 @@ namespace ProyectoIntegrador_MiCiudad.Models.ModelsViews;
 
 
 public class UsuarioLogueado{
-    public string Email { get; set; }
+    public string Username { get; set; }
     public string Password { get; set; }
 
-public UsuarioLogueado(string email, string password){
-    Email = email;
+public UsuarioLogueado(string username, string password){
+    Username = username;
     Password = password;
 }
 }    
