@@ -4,9 +4,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Mi Ciudad</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    
 </head>
+@{
+    @ViewData["Title"] = "MiCiudad";
+    var sesion = TempData["Sesion"];
+}
 
 <body>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -21,7 +25,7 @@
                 <li><a href="#">Reportes</a></li>
                 <li><a href="#">Calendario</a></li>
             </ul>
-            @if(HttpContext.Session.GetString("user") != null){
+            @if(sesion != null){
                 <a class="login-btn" href='@Url.Action("MiCuenta", "Account")'>MiCuenta</a>
             }else{
                 <a class="login-btn" href='@Url.Action("LogIn", "Account")'>Iniciar Sesión</a>

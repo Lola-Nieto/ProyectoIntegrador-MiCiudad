@@ -16,6 +16,8 @@ public class Account : Controller {
 
     public IActionResult Index()
     {
+        var reciboSesion = TempData["Sesion"] as string;
+        TempData["Sesion"] = reciboSesion;
         return View("LogIn");
     }
      public ActionResult Registro()
@@ -37,6 +39,8 @@ public class Account : Controller {
             return View();
         }
         public ActionResult MiCuenta(){
+            var reciboSesion = TempData["Sesion"] as string;
+            TempData["Sesion"] = reciboSesion;
             ViewBag.DatosUsuario = UsuarioLogeado;
             return View();
         }
@@ -68,13 +72,13 @@ public class Account : Controller {
          public ActionResult ValidacionOlvidePasswordCod(string username)
         {
             Usuario vecino = BD.TraerDatosUsuarioSoloUsername(username);
-            return View("Bienvenida");
+            return View("Index");
         }
         [HttpPost] 
              public bool ValidacionLogIn(string usuario, string contraseña)
         {
             bool ret = false;
-            Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña); //Esto se guarda?
+            Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña); 
             if(usuarioLogeado != null){
                 ret = true;
             }
@@ -83,10 +87,8 @@ public class Account : Controller {
         
         [HttpPost] 
         public ActionResult TraerDatos(string usuario, string contraseña){
-            //Usuario usuarioLogeado = new Usuario();
-            //Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña); --> si se guarda en el de arriba no
-            HttpContext.Session.SetString("user", new UsuarioLogeado(usuario, contraseña).ToString());
-            //Tendría que crear un usuario nuevo? Podría hacerlo en la validación y luego mandar directo al index
+            TempData["Sesion"] = HttpContext.Session.SetString("user", new UsuarioLogeado(usuario, contraseña).ToString());
+            return RedirectToAction("Index");
         } 
         
         public bool EstaLogeado(){

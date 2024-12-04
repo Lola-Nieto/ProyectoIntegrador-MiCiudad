@@ -12,9 +12,14 @@
 <body>
 
     <div class="form-container">
-        <h2 class="Titulo"> INICIAR SESIÓN  </h2>
+        
        <div class="formu">
-        <form  id="LogInForm" method="post" action='@Url.Action("TraerDatos","Account")' onsubmit='return ValidarLogIn'>
+         <button onclick="ValidarLogIn()">boton</button>
+         <h2 class="Titulo"> INICIAR SESIÓN  </h2>
+         <div class="form-container">
+         <form  id="LogInForm" method="post" action='@Url.Action("TraerDatos","Account")' onsubmit="return ValidarLogIn()">
+       
+
          
             <label for="usuario">Usuario</label>
             <input type="text" id="usuario" name="usuario" required>

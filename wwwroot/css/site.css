@@ -151,8 +151,10 @@ nav ul li a:hover {
 
 /* Footer */
 footer {
+  display: flex;
   background-color: #0A1128;
-  text-align: center;
+  text-align: bottom;
+
   padding: 20px;
   color: #f0f0f0;
   font-size: 0.9rem;

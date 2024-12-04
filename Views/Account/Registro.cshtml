@@ -8,6 +8,8 @@
 
         <form method="post" 
         action='@Url.Action("RegistroValidacion","Account")' onsubmit="return ValidarRegistro()">
+        <button onclick="ValidarRegistro()">boton</button>
+
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required>
 
