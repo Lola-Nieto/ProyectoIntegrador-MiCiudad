@@ -60,10 +60,12 @@ nav ul li a:hover {
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  text-decoration:none;
 }
 .login-btn:hover {
   background-color: #150ABF;
   transition: 0.3s;
+  text-decoration:none;
 }
 
 .logo {

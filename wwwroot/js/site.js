@@ -14,12 +14,16 @@ function ValidarRegistro()
     if(clienteExistente){
         let errorUsuario = document.getElementById('mostrarError');
         errorUsuario.innerHTML ="Ya hay una cuenta registrada con este documento";
-    }
+        return false;
+    }                                                                                                                                                                                                                                                                             
      if(usertomado){
         let errorUsuario = document.getElementById('mostrarError');
     errorUsuario.innerHTML ="Usuario ya está tomado";
+    return false;
     }
-    return usercontra && coinciden && !usertomado && !clienteExistente;
+   // return usercontra && coinciden && !usertomado && !clienteExistente;
+   return true;
+   
 }
 
 function ValidarPersonaNueva(dni){

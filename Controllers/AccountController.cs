@@ -25,7 +25,7 @@ public class Account : Controller {
     public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
             Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home"); 
         }
           public ActionResult LogIn()
         {
