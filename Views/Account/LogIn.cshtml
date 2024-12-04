@@ -10,13 +10,12 @@
     <script src="~/js/site.js" asp-append-version="true"></script> 
     
 <body>
-
+ <div class="formu">
     <div class="form-container">
-        
-       <div class="formu">
-         <button onclick="ValidarLogIn()">boton</button>
+        <button onclick="ValidarLogIn()">boton</button>
+       
          <h2 class="Titulo"> INICIAR SESIÓN  </h2>
-         <div class="form-container">
+         
          <form  id="LogInForm" method="post" action='@Url.Action("TraerDatos","Account")' onsubmit="return ValidarLogIn()">
        
 

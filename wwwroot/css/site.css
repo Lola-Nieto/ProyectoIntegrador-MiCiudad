@@ -9,6 +9,7 @@
 body {
   background-color: #0A1128;
   color: #333;
+ 
 }
 /*
 form {
@@ -19,12 +20,14 @@ form {
   height: 100vh;
 }
 */
+
 /* Navbar */
 .formu{
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 nav {
   background-color: #f0f0f0; /* Blanco grisáceo */
   display: flex;
@@ -153,8 +156,8 @@ nav ul li a:hover {
 footer {
   display: flex;
   background-color: #0A1128;
-  text-align: bottom;
-
+  flex-direction: row;
+  align-self:baseline;
   padding: 20px;
   color: #f0f0f0;
   font-size: 0.9rem;
@@ -164,8 +167,10 @@ footer {
   background-color: #E6E6E6;
   padding: 40px;
   border-radius: 10px;
-  width: 500px;
+  width: 66%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+
 }
 
 .Titulo{
@@ -176,7 +181,7 @@ footer {
 }
 
 label {
-  display: block;
+  
   margin-bottom: 8px;
   color: #20376B;
   
@@ -225,3 +230,4 @@ input[type="text"]:focus, input[type="email"], input[type="password"]:focus {
   text-decoration: none;
   color: #1F10E2;
 }
+

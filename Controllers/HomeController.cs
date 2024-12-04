@@ -15,6 +15,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var reciboSesion = TempData["Sesion"] as string;
+        TempData["Sesion"] = reciboSesion;
+        return View("LogIn");
     }
 }

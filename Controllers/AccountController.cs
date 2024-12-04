@@ -15,15 +15,7 @@ public class Account : Controller {
         _logger = logger;
     }
 
-<<<<<<< HEAD
-    public IActionResult Index()
-    {
-        var reciboSesion = TempData["Sesion"] as string;
-        TempData["Sesion"] = reciboSesion;
-        return View("LogIn");
-    }
-=======
->>>>>>> c3ece475caaa384a42a664a48e4e779166b98562
+    
      public ActionResult Registro()
         {
             return View();
@@ -45,7 +37,7 @@ public class Account : Controller {
         public ActionResult MiCuenta(){
             var reciboSesion = TempData["Sesion"] as string;
             TempData["Sesion"] = reciboSesion;
-            ViewBag.DatosUsuario = UsuarioLogeado;
+            ViewBag.DatosUsuario = UsuarioLogueado;
             return View();
         }
         public IActionResult Logout()
@@ -91,7 +83,7 @@ public class Account : Controller {
         
         [HttpPost] 
         public ActionResult TraerDatos(string usuario, string contraseña){
-            TempData["Sesion"] = HttpContext.Session.SetString("user", new UsuarioLogeado(usuario, contraseña).ToString());
+            TempData["Sesion"] = HttpContext.Session.SetString("user", new UsuarioLogueado(usuario, contraseña).ToString());
             return RedirectToAction("Index", "Home");
         } 
         
