@@ -5,8 +5,8 @@
 
 function ValidarRegistro()
 {
-    let usercontra = ValidarContraseña();
-    let coinciden = ContraseñasCoinciden();
+    let contraValida = ValidarContraseña();
+    let contraCoinciden = ContraseñasCoinciden();
     let username = document.getElementById('usuario').value;
     let usertomado = ValidarExistenciaUsuario(username); //Mandar el parámetro
     let dni = document.getElementById('dni').value;
@@ -21,8 +21,8 @@ function ValidarRegistro()
     errorUsuario.innerHTML ="Usuario ya está tomado";
     return false;
     }
-   // return usercontra && coinciden && !usertomado && !clienteExistente;
-   return true;
+   //return contraValida && contraCoinciden && !usertomado && !clienteExistente;
+   return false;
    
 }
 
