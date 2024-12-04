@@ -10,6 +10,7 @@ public UsuarioLogueado(string username, string password){
     Username = username;
     Password = password;
 }
+public UsuarioLogueado(){
 }    
 
-
+}

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using ProyectoIntegrador_MiCiudad.Models;
+using ProyectoIntegrador_MiCiudad.Models.ModelsViews;
 
 namespace ProyectoIntegrador_MiCiudad.Controllers;
 
@@ -15,8 +16,10 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        /*
         var reciboSesion = TempData["Sesion"] as string;
         TempData["Sesion"] = reciboSesion;
-        return View("LogIn");
+        */
+        return View();
     }
 }

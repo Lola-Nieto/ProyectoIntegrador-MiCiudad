@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ObjectPool;
 using ProyectoIntegrador_MiCiudad.Models;
+using ProyectoIntegrador_MiCiudad.Models.ModelsViews;
 
 
 namespace ProyectoIntegrador_MiCiudad.Controllers;
@@ -37,7 +38,6 @@ public class Account : Controller {
         public ActionResult MiCuenta(){
             var reciboSesion = TempData["Sesion"] as string;
             TempData["Sesion"] = reciboSesion;
-            ViewBag.DatosUsuario = UsuarioLogueado;
             return View();
         }
         public IActionResult Logout()
@@ -88,7 +88,9 @@ public class Account : Controller {
         
         [HttpPost] 
         public ActionResult TraerDatos(string username, string password){
-            TempData["Sesion"] = HttpContext.Session.SetString("user", new UsuarioLogueado(username, password).ToString());
+            UsuarioLogueado uLogueado = new UsuarioLogueado(username, password);
+            string ulog = uLogueado.ToString();
+             HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home");
         } 
         

@@ -25,7 +25,7 @@
                 <li><a href="#">Reportes</a></li>
                 <li><a href="#">Calendario</a></li>
             </ul>
-            @if(sesion != null){
+            @if(Context.Session.GetString("user") != null){
                 <a class="login-btn" href='@Url.Action("MiCuenta", "Account")'>MiCuenta</a>
             }else{
                 <a class="login-btn" href='@Url.Action("LogIn", "Account")'>Iniciar Sesión</a>
