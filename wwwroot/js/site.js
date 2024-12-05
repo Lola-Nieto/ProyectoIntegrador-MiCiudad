@@ -7,27 +7,32 @@ function ValidarRegistro()
 {
     let contraValida = ValidarContraseña();
     let contraCoinciden = ContraseñasCoinciden();
-    let username = document.getElementById('usuario').value;
-    let usertomado = ValidarExistenciaUsuario(username); //Mandar el parámetro
-    let dni = document.getElementById('dni').value;
-    let clienteExistente = ValidarPersonaNueva(dni);
-    if(clienteExistente){
-        let errorUsuario = document.getElementById('mostrarError');
-        errorUsuario.innerHTML ="Ya hay una cuenta registrada con este documento";
-        return false;
-    }                                                                                                                                                                                                                                                                             
+    let username = document.getElementById('usuario').value; 
+    let usertomado = ValidarExistenciaUsuario(username);                                                                                                                                                                                                                                                                          
      if(usertomado){
         let errorUsuario = document.getElementById('mostrarError');
+        alert('2do if / usuario ya tomado');
     errorUsuario.innerHTML ="Usuario ya está tomado";
     return false;
     }
-   //return contraValida && contraCoinciden && !usertomado && !clienteExistente;
-   return false;
-   
+    alert(contraValida && contraCoinciden && !usertomado);
+   return contraValida && contraCoinciden && !usertomado;  
+}
+function ValidarRegistro1eraParte(dni){
+    let ret = false;
+    let existeCliente = ValidarPersonaNueva(dni);
+    if(!existeCliente){
+        document.getElementById('parte2').style.visibility = "visible";
+        document.getElementById('parte1').style.visibility = "hidden";
+        mensajeB.style.color = (pass===pass.toLowerCase() ? "red" : "green");  
+        alert('CLiente no existe --> puede seguir parte 2'); 
+        ret = true;
+    }
+    return ret;
 }
 
 function ValidarPersonaNueva(dni){
-    
+    alert('Se mete en condicion AJAX validarPersonaNueva');
         $.ajax({
             url: '/Account/ExisteClienteRegistro', 
             data: {Dni : dni}, 
@@ -35,9 +40,11 @@ function ValidarPersonaNueva(dni){
             dataType: 'json', 
             success: function(response){
                     ret = response;   
+                    
             }
             
         });
+        alert(ret);
         return ret;
 }
 
@@ -50,6 +57,7 @@ function ContraseñasCoinciden()
     if(!(password === passRepe)){
         let error = document.getElementById('mostrarError');
         error.innerHTML="Las contraseñas no coinciden";
+        alert('contraseñas no coinciden');
         ret=false;
     }
     return ret;
@@ -69,6 +77,7 @@ function ValidarContraseña()
     if(tiene8Min && tieneMinus && tieneMayus){
         ret = true;
     }else{
+        alert('Contraseña no cumple requisitos');
         let errorContraseña = document.getElementById('mostrarError');
         errorContraseña.innerHTML ="Su contraseña no cumple con los requisitos necesarios (al menos 8 digitos, 1 mayúscula y 1 minúscula)";
     }
@@ -91,14 +100,25 @@ function ValidarExistenciaUsuario(username){
             }
             
         });
-        if(ret){
-            document.getElementById('parte2').style.visibility = "visible";
-            document.getElementById('parte1').style.visibility = "hidden";
-            mensajeB.style.color = (pass===pass.toLowerCase() ? "red" : "green");   
-        }
+        }  
+        
     }
     return ret;
- }
+
+    function ValidarOlvidePass1eraParte(usuario){
+        let ret= false;
+        let existeUsuario = ValidarExistenciaUsuario(usuario);
+        if(!existeUsuario){
+            document.getElementById('parte2').style.visibility = "visible";
+            document.getElementById('parte1').style.visibility = "hidden";
+            mensajeB.style.color = (pass===pass.toLowerCase() ? "red" : "green");  
+            alert('Usuario no existe --> puede seguir parte 2'); 
+            ret = true;
+        }
+        alert(ret);
+        return ret;
+    }
+
 function ValidarUsuarioOlvidePass(usuario){
 return ValidarExistenciaUsuario(username);
 }
@@ -148,6 +168,7 @@ function ValidarExistenciaUsuarioYContra(username, password){
 
 
 function ValidarLogIn(){
+    alert('ENtra a Validar el Log In');
     let username = document.getElementById('usuario').value;
     let password = document.getElementById('contraseña').value;
     let existeUsuario = ValidarExistenciaUsuarioYContra(username, password);
@@ -155,6 +176,7 @@ function ValidarLogIn(){
     if(!existeUsuario){
         let errorUsuario = document.getElementById('mostrarError');
         errorUsuario.innerHTML ="Usuario y/o contraseña incorrectos";
+        alert('Usuario y/o contraseña incorrectos');
     }
     return existeUsuario;
 }

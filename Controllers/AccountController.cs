@@ -59,7 +59,7 @@ public class Account : Controller {
         {
             string mail = BD.BuscarMail(Username);
             bool ret = false; 
-            if(mail != ""){
+            if(mail != ""){ //O habría que poner null?
                 ret = true; 
             }
             return ret;

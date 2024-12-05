@@ -18,7 +18,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        if(HttpContent.Session.GetString("user")){
+        if(HttpContext.Session.GetString("user") != null){
          var reciboUsuario = TempData["Usuario"] as Usuario;
         TempData["Usuario"] = reciboUsuario;   
         }

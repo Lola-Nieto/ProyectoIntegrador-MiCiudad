@@ -9,3 +9,5 @@ https://www.twilio.com/en-us/blog/distribute-sessions-in-aspdotnet-core#:~:text=
 - Botón de siguiente en olvide contraseña no hace nada (no si es que llama al js, este último no está haciendo lo que debería hacer)
 
 Falta crear el usuario en el olvide contraseña 
+
+No entra al JS!! (Al menos en el Log In)

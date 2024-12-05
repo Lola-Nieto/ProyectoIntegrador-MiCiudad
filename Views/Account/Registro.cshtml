@@ -9,7 +9,7 @@
         <form method="post" 
         action='@Url.Action("RegistroValidacion","Account")' onsubmit="return ValidarRegistro()">
        
-
+        <div id="parte1">
             <label for="nombre">Nombre</label>
             <input type="text" id="nombre" name="nombre" required>
 
@@ -29,24 +29,33 @@
             <label for="altura">Altura</label>
             <input type="number" id="altura" name="altura" required>
             
-            <h3> Cuenta </h3> 
-            <label for="usuario">Usuario</label>
-            <input type="text" id="usuario" name="usuario" placeholder="Escriba un nombre para que sus vecinos lo identifiquen" required >
+            <div class="buttons">
+                <a href='@Url.Action("LogIn", "Account")' class="atras">Atrás</a>
+                <button onclick="ValidarRegistro1eraParte(dni)"  class="siguiente">Siguiente</button> 
+            </div>
 
-            <label for="password1">Contraseña</label>
-            <input type="password" id="contraseña" name="contraseña" required>
+        </div>
+            <div id="parte2" style="display:none"> 
+                <h3> Cuenta </h3> 
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Escriba un nombre para que sus vecinos lo identifiquen" required >
 
-            <label for="password2">Repetir contraseña</label>
-            <input type="password" id="password2" name="password2" required>
-            
+                <label for="password1">Contraseña</label>
+                <input type="password" id="contraseña" name="contraseña" required>
+
+                <label for="password2">Repetir contraseña</label>
+                <input type="password" id="password2" name="password2" required>
+                
+                <div class="buttons">
+                    <a href='@Url.Action("LogIn", "Account")' class="atras">Atrás</a>
+                    <button type="submit" class="siguiente" > Siguiente </button>
+                </div>
+            </div>
             <p id="mostrarError"> 
             
             </p> 
 
-            <div class="buttons">
-                <a href='@Url.Action("LogIn", "Account")' class="atras">Atrás</a>
-                <button type="submit" class="siguiente" > Siguiente </button>
-            </div>
+            
         </form>
         </div>
     </div>
