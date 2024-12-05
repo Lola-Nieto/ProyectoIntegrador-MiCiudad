@@ -88,10 +88,10 @@ public class Account : Controller {
         }
         
         [HttpPost] 
-        public ActionResult TraerDatos(string username, string password){
-            UsuarioLogueado uLogueado = new UsuarioLogueado(username, password);
+        public ActionResult TraerDatos(string usuario, string contraseña){
+            UsuarioLogueado uLogueado = new UsuarioLogueado(usuario, contraseña);
             string ulog = uLogueado.ToString();
-            TempData["Usuario"] = BD.TraerDatosUsuario(username, password);
+            TempData["Usuario"] = BD.TraerDatosUsuario(usuario, contraseña);
              HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home");
         } 

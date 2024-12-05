@@ -2,7 +2,6 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-
 function ValidarRegistro()
 {
     alert('Entra a la función');
@@ -20,9 +19,9 @@ function ValidarRegistro()
     alert(contraValida && contraCoinciden && !usertomado);
    return contraValida && contraCoinciden && !usertomado;  
 }
-function ValidarRegistro1eraParte(dni){
-    alert("CHAU");
+function ValidarRegistro1eraParte(){
     let ret = false;
+    let dni = document.getElementById('dni').value;
     let existeCliente = ValidarPersonaNueva(dni);
     if(!existeCliente){
         document.getElementById('parte2').style.visibility = "visible";
@@ -105,9 +104,8 @@ function ValidarExistenciaUsuario(username){
             
         });
         }  
-        
-    }
     return ret;
+}
 
     function ValidarOlvidePass1eraParte(usuario){
         let ret= false;
@@ -134,6 +132,7 @@ function ValidarUsuarioEscrito(username){
          let errorUsuario = document.getElementById('mostrarError');
          errorUsuario.innerHTML = "El ingreso de usuario es requerido";
     }
+    alert('El usuario está escrito: ' + ret);
     return ret;
 }
 
@@ -154,8 +153,8 @@ function ValidarCodigo(){
 
 function ValidarExistenciaUsuarioYContra(username, password){
     let ret = false; 
-    let usuario = username.value;
-    if(ValidarUsuarioEscrito()){
+    alert('Usuario:' + username);
+    if(ValidarUsuarioEscrito(username)){
         $.ajax({
             url: '/Account/ValidacionLogIn', 
             data: {usuario : username , contraseña : password}, 
@@ -174,6 +173,8 @@ function ValidarExistenciaUsuarioYContra(username, password){
 function ValidarLogIn(){
     alert('ENtra a Validar el Log In');
     let username = document.getElementById('usuario').value;
+    
+    alert('Usuario:' + username);
     let password = document.getElementById('contraseña').value;
     let existeUsuario = ValidarExistenciaUsuarioYContra(username, password);
     

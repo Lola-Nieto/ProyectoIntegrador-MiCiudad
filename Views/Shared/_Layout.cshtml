@@ -1,7 +1,11 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 
+
+
 <head>
+     
+     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MiCiudad</title>
@@ -13,7 +17,8 @@
 
 <body>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    
+    <script src="~/js/utils.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <header> 
         <nav>
             <img src='@Url.Content("~/img/logo.png")' alt="Logo" class="logo"/>
@@ -44,15 +49,9 @@
         &copy; @DateTime.Now.Year - MiCiudad
     </footer>
 
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/utils.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
 
-     <script src="~/js/site.js" asp-append-version="true"></script>
-     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-
-    <script src="~/js/utils.js" asp-append-version="true"></script>
 
 
 </body>

@@ -8,7 +8,7 @@ using ProyectoIntegrador_MiCiudad.Models.ModelsViews;
 namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD{
-private static string _connectionString = @"Server=.;Database=MiCiudad; Trusted_Connection=True";
+private static string _connectionString = @"Server=A-PHZ2-LUM-10;Database=MiCiudad; Trusted_Connection=True";
 
 
 public static void AgregarVecino(Usuario userAAgregar) {
@@ -64,15 +64,13 @@ public static bool BuscarSiExiste(string username){
 }
 
 public static bool ChequearExistenciaCliente(int dni){
-    string SQL = "SELECT UserName FROM Usuario WHERE DNI = @pDocumento "; 
-    using(SqlConnection db = new SqlConnection(_connectionString)){
-    string usuarioTraido = db.QueryFirstOrDefault(SQL, new{pDocumento = dni}).ToString();
     bool ret = false;
-    if(usuarioTraido != null){
-        ret = true;
-    } 
-    return ret;
-}
+    string sp = "sp_ChequearExistenciaCliente"; 
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+    ret = db.Query<bool>(sp, new{pDocumento = dni , ret = ret}, 
+    commandType: CommandType.StoredProcedure);
+    
+}return ret;
 }
 public static string BuscarMail(string usuarioIngresado){
     string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists? Tira error sino?
