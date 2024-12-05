@@ -9,6 +9,7 @@
 body {
   background-color: #0A1128;
   color: #333;
+  
  
 }
 /*
@@ -22,6 +23,13 @@ form {
 */
 
 /* Navbar */
+.chau{
+  border-radius: 15%;
+  background-color: red;
+  color: white; 
+  padding:20px;
+  text-decoration: none;
+}
 .formu{
   display: flex;
   justify-content: center;

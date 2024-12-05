@@ -5,6 +5,8 @@
 
 function ValidarRegistro()
 {
+    alert('Entra a la función');
+
     let contraValida = ValidarContraseña();
     let contraCoinciden = ContraseñasCoinciden();
     let username = document.getElementById('usuario').value; 
@@ -19,17 +21,19 @@ function ValidarRegistro()
    return contraValida && contraCoinciden && !usertomado;  
 }
 function ValidarRegistro1eraParte(dni){
+    alert("CHAU");
     let ret = false;
     let existeCliente = ValidarPersonaNueva(dni);
     if(!existeCliente){
         document.getElementById('parte2').style.visibility = "visible";
         document.getElementById('parte1').style.visibility = "hidden";
-        mensajeB.style.color = (pass===pass.toLowerCase() ? "red" : "green");  
         alert('CLiente no existe --> puede seguir parte 2'); 
         ret = true;
     }
     return ret;
 }
+
+
 
 function ValidarPersonaNueva(dni){
     alert('Se mete en condicion AJAX validarPersonaNueva');

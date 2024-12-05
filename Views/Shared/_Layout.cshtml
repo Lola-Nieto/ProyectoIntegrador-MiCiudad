@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <title>@ViewData["Title"] - MiCiudad</title>
     
 </head>
@@ -16,7 +15,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     
     <header> 
-    <nav>
+        <nav>
             <img src='@Url.Content("~/img/logo.png")' alt="Logo" class="logo"/>
             <ul>
                 <li><a href="#">Chats</a></li>
@@ -31,13 +30,16 @@
                 <a class="login-btn" href='@Url.Action("LogIn", "Account")'>Iniciar Sesión</a>
             }
             
-             
+            
             
         </nav>
-        </header>
-         <main role="main">
+    </header>
+
+
+    <main role="main">
         @RenderBody()
     </main>
+
     <footer class="footer">
         &copy; @DateTime.Now.Year - MiCiudad
     </footer>
@@ -46,6 +48,13 @@
     <script src="~/js/utils.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
-</body>
 
+     <script src="~/js/site.js" asp-append-version="true"></script>
+     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <script src="~/js/utils.js" asp-append-version="true"></script>
+
+
+</body>
 </html>
+

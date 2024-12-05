@@ -1,10 +1,11 @@
 @{
     ViewData["Title"] = "Crear Cuenta - MiCiudad";
 }
-<body >
+
 <div class="formu"> 
 <div class="form-container">
         <h2 class="Titulo">CREAR CUENTA</h2>
+        <button onclick="ValidarRegistro1eraParte(document.getElementById('dni').value)">boton</button>
 
         <form method="post" 
         action='@Url.Action("RegistroValidacion","Account")' onsubmit="return ValidarRegistro()">
@@ -31,7 +32,7 @@
             
             <div class="buttons">
                 <a href='@Url.Action("LogIn", "Account")' class="atras">Atrás</a>
-                <button onclick="ValidarRegistro1eraParte(dni)"  class="siguiente">Siguiente</button> 
+                <button onclick="ValidarRegistro1eraParte(document.getElementById('dni').value)"  class="siguiente">Siguiente</button> 
             </div>
 
         </div>
@@ -59,5 +60,3 @@
         </form>
         </div>
     </div>
-
-</body>
