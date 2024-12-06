@@ -1,7 +1,7 @@
 @{
     ViewData["Title"] = "Crear Cuenta - MiCiudad";
 }
-
+<body >
 <div class="formu"> 
 <div class="form-container">
         <h2 class="Titulo">CREAR CUENTA</h2>
@@ -17,7 +17,7 @@
             <input type="text" id="apellido" name="apellido" required>
 
             <label for="dni">DNI</label>
-            <input type="int" id="dni" name="dni" required>
+            <input type="number" id="dni" name="dni" required>
 
             <label for="email">Mail</label>
             <input type="email" id="email" name="email" required>
@@ -31,7 +31,7 @@
             
             <div class="buttons">
                 <a href='@Url.Action("LogIn", "Account")' class="atras">Atrás</a>
-                <button onclick="ValidarRegistro1eraParte()"  class="siguiente">Siguiente</button> 
+                <button onclick="ValidarRegistro1eraParte(dni)"  class="siguiente">Siguiente</button> 
             </div>
 
         </div>
@@ -54,10 +54,10 @@
             <p id="mostrarError"> 
             
             </p> 
-            
-       
-        <button onclick="ValidarRegistro1eraParte(dni)">boton</button>
+
             
         </form>
         </div>
     </div>
+
+</body>

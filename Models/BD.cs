@@ -8,7 +8,7 @@ using ProyectoIntegrador_MiCiudad.Models.ModelsViews;
 namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD{
-private static string _connectionString = @"Server=A-PHZ2-LUM-10;Database=MiCiudad; Trusted_Connection=True";
+private static string _connectionString = @"Server=LMNHCOMPU\SQLEXPRESS02;Database=MiCiudad; Trusted_Connection=True";
 
 
 public static void AgregarVecino(Usuario userAAgregar) {
@@ -62,7 +62,9 @@ public static bool BuscarSiExiste(string username){
 } //Para qué si la búsqueda para registro la hace con el mail?
 
 }
+/*
 
+Con SP
 public static bool ChequearExistenciaCliente(int dni){
     bool ret = false;
     string sp = "sp_ChequearExistenciaCliente"; 
@@ -72,6 +74,38 @@ public static bool ChequearExistenciaCliente(int dni){
     
 }return ret;
 }
+
+Anterior
+public static bool ChequearExistenciaCliente(int dni){
+    string usuarioTraido;
+    string SQL = "SELECT UserName FROM Usuario WHERE DNI = @pDocumento "; 
+    using(SqlConnection db = new SqlConnection(_connectionString)){
+    usuarioTraido = db.QueryFirstOrDefault(SQL, new{pDocumento = dni}).ToString();
+    bool ret = false;
+    if(string.IsNullOrEmpty(usuarioTraido)){
+        ret = true;
+    } 
+    return ret;
+}
+}
+
+
+*/
+public static bool ChequearExistenciaCliente(int dni)
+{
+    string usuarioTraido = null; 
+    string SQL = "SELECT UserName FROM Usuario WHERE DNI = @pDocumento"; 
+
+    using (SqlConnection db = new SqlConnection(_connectionString))
+    {
+        var resultado = db.QueryFirstOrDefault<string>(SQL, new { pDocumento = dni });
+        usuarioTraido = resultado;
+    }
+
+    return !string.IsNullOrEmpty(usuarioTraido);
+}
+
+
 public static string BuscarMail(string usuarioIngresado){
     string SQL = "SELECT Mail FROM Usuario WHERE UserName = @pUsuario"; //If exists? Tira error sino?
     string mailTraido = "";

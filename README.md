@@ -10,4 +10,4 @@ https://www.twilio.com/en-us/blog/distribute-sessions-in-aspdotnet-core#:~:text=
 
 Falta crear el usuario en el olvide contraseña 
 
-No entra al JS!! (Al menos en el Log In)
+No actualiza el DNI cuando llamo por segunda vez al js en la validación del Registro (si quiero modificar el dni)

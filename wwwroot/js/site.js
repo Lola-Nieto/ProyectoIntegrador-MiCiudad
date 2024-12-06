@@ -22,12 +22,17 @@ function ValidarRegistro()
 function ValidarRegistro1eraParte(){
     let ret = false;
     let dni = document.getElementById('dni').value;
+    alert(dni);
     let existeCliente = ValidarPersonaNueva(dni);
     if(!existeCliente){
-        document.getElementById('parte2').style.visibility = "visible";
-        document.getElementById('parte1').style.visibility = "hidden";
+        document.getElementById('parte2').style.display = "none";
+        document.getElementById('parte1').style.display = "block";
         alert('CLiente no existe --> puede seguir parte 2'); 
         ret = true;
+    }else{
+        let errorUsuario = document.getElementById('mostrarError');
+        alert('Cliente ya existe - entra al else');
+    errorUsuario.innerHTML ="Ya existe un usuario asociado a este DNI";
     }
     return ret;
 }
@@ -47,7 +52,7 @@ function ValidarPersonaNueva(dni){
             }
             
         });
-        alert(ret);
+        alert("Existe el cliente:" + ret);
         return ret;
 }
 
