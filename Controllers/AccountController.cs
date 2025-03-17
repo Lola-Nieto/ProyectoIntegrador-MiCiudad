@@ -24,9 +24,11 @@ public class Account : Controller {
     [HttpPost] 
     public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
-            TempData["Usuario"] = Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña);   
+            Usuario nuevoVecino = Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña); 
+            Session["Usuario"] =  nuevoVecino; 
+            HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home"); 
-        }
+        }  
           public ActionResult LogIn()
         {
             return View();

@@ -25,8 +25,8 @@ function ValidarRegistro1eraParte(){
     alert(dni);
     let existeCliente = ValidarPersonaNueva(dni);
     if(!existeCliente){
-        document.getElementById('parte2').style.display = "none";
-        document.getElementById('parte1').style.display = "block";
+        document.getElementById('parte1').style.display = "none";
+        document.getElementById('parte2').style.display = "block";
         alert('CLiente no existe --> puede seguir parte 2'); 
         ret = true;
     }else{
