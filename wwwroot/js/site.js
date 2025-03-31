@@ -157,21 +157,25 @@ function ValidarCodigo(){
 }
 
 function ValidarExistenciaUsuarioYContra(username, password){
-    let ret = false; 
+    let ret; 
     alert('Usuario:' + username);
     if(ValidarUsuarioEscrito(username)){
+        alert('Antes del AJAX');
         $.ajax({
             url: '/Account/ValidacionLogIn', 
-            data: {usuario : username , contraseña : password}, 
+            data: {usuario : username , pass : password}, 
             type: 'GET', 
             dataType: 'json', 
             success: function(response){
-                    ret = response;   
+                    ret = response; 
+                    return ret;  
+            }, error: function(response){
+                return false;
             }
             
         });
     }
-    return ret;
+   
 }
 
 

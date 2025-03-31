@@ -21,14 +21,15 @@ public class Account : Controller {
         {
             return View();
         }
-    [HttpPost] 
-    public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
+    /* [HttpPost] 
+   public ActionResult RegistroValidacion(string usuario, string nombre, string apellido, int dni, string mail, string calle, int altura, string contraseña)
         {
             Usuario nuevoVecino = Usuario.CrearUsuarioYAgregar(usuario, nombre, apellido, dni, mail, calle, altura, contraseña); 
             Session["Usuario"] =  nuevoVecino; 
             HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home"); 
         }  
+        */
           public ActionResult LogIn()
         {
             return View();
@@ -73,12 +74,11 @@ public class Account : Controller {
 
             return View("Index", "Home");
         }
-        [HttpPost] 
-             public bool ValidacionLogIn(string usuario, string contraseña)
+        public bool ValidacionLogIn(string usuario, string pass)
         {
             bool ret = false;
-            Usuario usuarioLogeado = BD.TraerDatosUsuario(usuario, contraseña); 
-            if(usuarioLogeado != null){
+            Usuario usuarioLogueado = BD.TraerDatosUsuario(usuario, pass); 
+            if(usuarioLogueado != null){
                 ret = true;
             }
             return ret;
@@ -88,13 +88,18 @@ public class Account : Controller {
             bool existe = BD.ChequearExistenciaCliente(Dni);
             return existe;
         }
-        
+        //Areglar esto!!!!! 
+        //InvalidOperationException: The 'Microsoft.AspNetCore.Mvc.ViewFeatures.Infrastructure.DefaultTempDataSerializer' cannot serialize an object of type 'ProyectoIntegrador_MiCiudad.Models.Usuario'.
+        //Microsoft.AspNetCore.Mvc.ViewFeatures.Infrastructure.DefaultTempDataSerializer.Serialize(IDictionary<string, object> values)
+
+        //Tema con la sesión del usuario y traer los datos de la BD y convertirlos a tipo Usuario
+
         [HttpPost] 
         public ActionResult TraerDatos(string usuario, string contraseña){
             UsuarioLogueado uLogueado = new UsuarioLogueado(usuario, contraseña);
             string ulog = uLogueado.ToString();
             TempData["Usuario"] = BD.TraerDatosUsuario(usuario, contraseña);
-             HttpContext.Session.SetString("user", ulog);
+            HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home");
         } 
         

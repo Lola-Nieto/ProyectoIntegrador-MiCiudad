@@ -40,7 +40,7 @@ public static Usuario TraerDatosUsuario(string username, string contraseñaIngre
     return usuarioTraido;
 
 }
-
+//Cambio de ret (bool) a usuarioTraido
 public static Usuario TraerDatosUsuarioSoloUsername(string username){
     string SQL = "SELECT * FROM Usuario WHERE UserName = @pUsuario"; 
     Usuario usuarioTraido = null;
