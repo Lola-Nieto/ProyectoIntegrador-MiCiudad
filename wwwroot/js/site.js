@@ -167,14 +167,14 @@ function ValidarExistenciaUsuarioYContra(username, password){
             type: 'GET', 
             dataType: 'json', 
             success: function(response){
-                    ret = response; 
-                    return ret;  
+                    ret = response;  
             }, error: function(response){
-                return false;
+                ret = false;
             }
-            
         });
+        return ret;
     }
+    alert('Ret del ValidarExistenciaUsuarioYContra' + ret);
    
 }
 
@@ -185,12 +185,30 @@ function ValidarLogIn(){
     
     alert('Usuario:' + username);
     let password = document.getElementById('contraseña').value;
-    let existeUsuario = ValidarExistenciaUsuarioYContra(username, password);
     
-    if(!existeUsuario){
-        let errorUsuario = document.getElementById('mostrarError');
-        errorUsuario.innerHTML ="Usuario y/o contraseña incorrectos";
-        alert('Usuario y/o contraseña incorrectos');
+    if(ValidarUsuarioEscrito(username)){
+        alert('Antes del AJAX');
+        $.ajax({
+            url: '/Account/ValidacionLogIn', 
+            data: {usuario : username , pass : password}, 
+            type: 'GET', 
+            dataType: 'json', 
+            success: function(response){
+                    if(response){
+                        let form = document.getElementById('LogInForm');
+                    form.submit();
+                    }
+                    
+                    else
+                    {
+                        let errorUsuario = document.getElementById('mostrarError');
+                        errorUsuario.innerHTML ="Usuario y/o contraseña incorrectos";
+                        return false;    
+                    }  
+            }, error: function(response){
+                return false;
+            }
+        });
     }
-    return existeUsuario;
+    //Inicia sesión aunque sea incorrecto el usuario :/
 }
