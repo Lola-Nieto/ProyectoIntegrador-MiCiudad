@@ -11,7 +11,6 @@
        
          <h2 class="Titulo"> INICIAR SESIÓN  </h2>
          
-         <form  id="LogInForm" method="post" action='@Url.Action("TraerDatos","Account")' onsubmit="return ValidarLogIn()">
        
 
          
@@ -27,10 +26,8 @@
 
             <div class="buttons">
                 <a href = '@Url.Action("Registro", "Account")' class="atras">Crear Cuenta</a>
-                <button type="submit" class="siguiente" > Siguiente </button>
+                <button onclick="ValidarLogIn()" class="siguiente" > Siguiente </button>
             </div>
-            
-        </form>
     </div>
     </div>
 

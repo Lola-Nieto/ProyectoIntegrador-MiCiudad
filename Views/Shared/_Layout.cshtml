@@ -27,7 +27,7 @@
                 <li><a href="#">Servicios</a></li>
                 <li><a href="#">Marketplace</a></li>
                 <li><a href="#">Reportes</a></li>
-                <li><a href="#">Calendario</a></li>
+                <li><a asp-controller="Calendario" asp-action="Index">Calendario</a></li>
             </ul>
             @if(Context.Session.GetString("user") != null){
                 <a class="login-btn" href='@Url.Action("MiCuenta", "Account")'>MiCuenta</a>

@@ -180,7 +180,6 @@ function ValidarExistenciaUsuarioYContra(username, password){
 
 
 function ValidarLogIn(){
-    alert('ENtra a Validar el Log In');
     let username = document.getElementById('usuario').value;
     
     alert('Usuario:' + username);
@@ -193,18 +192,12 @@ function ValidarLogIn(){
             data: {usuario : username , pass : password}, 
             type: 'GET', 
             dataType: 'json', 
-            success: function(response){
-                    if(response){
-                        let form = document.getElementById('LogInForm');
-                    form.submit();
-                    }
-                    
-                    else
-                    {
-                        let errorUsuario = document.getElementById('mostrarError');
-                        errorUsuario.innerHTML ="Usuario y/o contraseña incorrectos";
-                        return false;    
-                    }  
+            success: function(response) {
+                if (response.id > 0) {
+                    window.location.href = '/Account/TraerDatos?id=' + response.id;
+                } else {
+                    document.getElementById('mostrarError').innerHTML = "Usuario y/o contraseña incorrectos";
+                }
             }, error: function(response){
                 return false;
             }

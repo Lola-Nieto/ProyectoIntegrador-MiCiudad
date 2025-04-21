@@ -95,13 +95,16 @@ public class Account : Controller {
         //Tema con la sesión del usuario y traer los datos de la BD y convertirlos a tipo Usuario
 
         [HttpPost] 
-        public ActionResult TraerDatos(string usuario, string contraseña){
-            UsuarioLogueado uLogueado = new UsuarioLogueado(usuario, contraseña);
+        public ActionResult TraerDatos(string id){
+            Usuario vecino = BD.TraerDatosUsuarioConID(id);
+            UsuarioLogueado uLogueado = new UsuarioLogueado(vecino.UserName, vecino.Nombre, vecino.Apellido, vecino.IsAdmin);
+
+            //UsuarioLogueado uLogueado = new UsuarioLogueado(vecino.UserName, vecino.Contraseña);
             string ulog = uLogueado.ToString();
-            TempData["Usuario"] = BD.TraerDatosUsuario(usuario, contraseña);
+            TempData["Usuario"] = BD.TraerDatosUsuarioConID(id);
             HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home");
-        } 
+        } //Hacer bien esto!!!!!!!!
         
         public bool EstaLogeado(){
             bool ret = false;
