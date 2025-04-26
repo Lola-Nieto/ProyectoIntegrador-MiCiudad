@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Log In - MiCiudad";
-    var Mensaje = ViewBag.MensajeError;
 }
 
  <div class="formu">
@@ -20,7 +19,6 @@
             <label for="contraseña">Contraseña</label>
             <input type="password" id="contraseña" name="contraseña" required>
             <p id="mostrarError"> 
-            @Mensaje
             </p> 
             <a class = "olvido"href='@Url.Action("OlvidePassword", "Account")'>¿Olvidó su contrseña?</a>
 

@@ -74,14 +74,10 @@ public class Account : Controller {
 
             return View("Index", "Home");
         }
-        public bool ValidacionLogIn(string usuario, string pass)
+        public Usuario ValidacionLogIn(string usuario, string pass)
         {
-            bool ret = false;
             Usuario usuarioLogueado = BD.TraerDatosUsuario(usuario, pass); 
-            if(usuarioLogueado != null){
-                ret = true;
-            }
-            return ret;
+            return Json(usuarioLogueado);
         }
 
         public bool ExisteClienteRegistro(int Dni){
@@ -94,6 +90,7 @@ public class Account : Controller {
 
         //Tema con la sesión del usuario y traer los datos de la BD y convertirlos a tipo Usuario
 
+/*
         [HttpPost] 
         public ActionResult TraerDatos(string id){
             Usuario vecino = BD.TraerDatosUsuarioConID(id);
@@ -105,7 +102,17 @@ public class Account : Controller {
             HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home");
         } //Hacer bien esto!!!!!!!!
+        */
         
+        [HttpPost] 
+        public ActionResult TraerDatos(Usuario vecino){
+       
+            //UsuarioLogueado uLogueado = new UsuarioLogueado(vecino.UserName, vecino.Contraseña);
+            string ulog = vecino.ToString();
+            HttpContext.Session.SetString("user", ulog);
+            return RedirectToAction("Index", "Home");
+        } //Hacer bien esto!!!!!!!!
+
         public bool EstaLogeado(){
             bool ret = false;
             if(HttpContext.Session.GetString("user") != null){

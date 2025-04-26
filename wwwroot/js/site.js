@@ -193,15 +193,14 @@ function ValidarLogIn(){
             type: 'GET', 
             dataType: 'json', 
             success: function(response) {
-                if (response.id > 0) {
-                    window.location.href = '/Account/TraerDatos?id=' + response.id;
+                alert(response);
+                if (response != null) {
+                    window.location.href = '/Account/TraerDatos?id=' + response; //Si es que response SOLO contiene el objeto usuario
                 } else {
                     document.getElementById('mostrarError').innerHTML = "Usuario y/o contraseña incorrectos";
                 }
-            }, error: function(response){
-                return false;
             }
         });
+        alert('Fuera de AJAX')
     }
-    //Inicia sesión aunque sea incorrecto el usuario :/
 }

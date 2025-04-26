@@ -1,5 +1,5 @@
-using System.Data.SqlClient;
 using Dapper;
+using Microsoft.Data.SqlClient;
 using System.Collections.Generic;
 using Microsoft.Extensions.ObjectPool;
 using ProyectoIntegrador_MiCiudad.Models.ModelsViews;
@@ -34,6 +34,8 @@ public static class BD
         return existe;
     }
     */
+
+    /*
 public static Usuario TraerDatosUsuario(string username, string contraseña)
 {
     Usuario user = null;
@@ -50,6 +52,7 @@ public static Usuario TraerDatosUsuario(string username, string contraseña)
         {
             user = new Usuario()
             {
+                ID = Convert.ToInt32(["ID"]),
                 UserName = reader["UserName"].ToString(),
                 Contraseña = reader["Contraseña"].ToString(),
                 Nombre = reader["Nombre"].ToString(),
@@ -67,9 +70,21 @@ public static Usuario TraerDatosUsuario(string username, string contraseña)
         }
     }
     return user;
-}
+} 
+--> Lo llamo desde ValidacionLogIn --> No hacerlo así porq no se sabe si efectivamente va a devolver un usuario 
+*/
+ public static Usuario TraerDatosUsuario(string username, string contraseña)
+    {
+        string SQL = "SELECT * FROM USUARIO WHERE UserName = @pUser AND Contraseña = @pPass";
+        Usuario usuarioTraido = null;
+        using (SqlConnection db = new SqlConnection(_connectionString))
+        {
+            usuarioTraido = db.QueryFirstOrDefault<Usuario>(SQL, new { pUser = username, pPass = contraseña });
+        }
+        return usuarioTraido;
 
-    //Cambio de ret (bool) a usuarioTraido
+    }
+ 
     public static Usuario TraerDatosUsuarioConID(string id)
     {
         string SQL = "SELECT * FROM Usuario WHERE ID = @pId";
@@ -92,6 +107,7 @@ public static Usuario TraerDatosUsuario(string username, string contraseña)
         return usuarioTraido;
 
     }
+    
     public static bool BuscarSiExiste(string username)
     {
         string SQL = "SELECT UserName FROM Usuario WHERE UserName = @pUsuario ";
@@ -107,6 +123,7 @@ public static Usuario TraerDatosUsuario(string username, string contraseña)
         } //Para qué si la búsqueda para registro la hace con el mail?
 
     }
+    
     /*
 
     Con SP
