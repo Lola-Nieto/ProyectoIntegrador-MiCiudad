@@ -177,30 +177,27 @@ function ValidarExistenciaUsuarioYContra(username, password){
     alert('Ret del ValidarExistenciaUsuarioYContra' + ret);
    
 }
-
-
 function ValidarLogIn(){
     let username = document.getElementById('usuario').value;
-    
-    alert('Usuario:' + username);
     let password = document.getElementById('contraseña').value;
     
     if(ValidarUsuarioEscrito(username)){
-        alert('Antes del AJAX');
         $.ajax({
             url: '/Account/ValidacionLogIn', 
-            data: {usuario : username , pass : password}, 
+            data: { usuario: username, pass: password }, 
             type: 'GET', 
             dataType: 'json', 
             success: function(response) {
-                alert(response);
-                if (response != null) {
-                    window.location.href = '/Account/TraerDatos?id=' + response; //Si es que response SOLO contiene el objeto usuario
+                console.log(response);
+                if (response != -1) {
+                    window.location.href = '/Account/TraerDatos?id=' + response; 
                 } else {
                     document.getElementById('mostrarError').innerHTML = "Usuario y/o contraseña incorrectos";
                 }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error en AJAX:", error);
             }
         });
-        alert('Fuera de AJAX')
     }
 }

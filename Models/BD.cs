@@ -73,19 +73,24 @@ public static Usuario TraerDatosUsuario(string username, string contraseña)
 } 
 --> Lo llamo desde ValidacionLogIn --> No hacerlo así porq no se sabe si efectivamente va a devolver un usuario 
 */
- public static Usuario TraerDatosUsuario(string username, string contraseña)
+public static int TraerIdUsuario(string username, string contraseña)
+{
+    string SQL = "SELECT ID FROM USUARIO WHERE UserName = @pUser AND Contraseña = @pPass";
+    int idTraido = -1;
+    using (SqlConnection db = new SqlConnection(_connectionString))
     {
-        string SQL = "SELECT * FROM USUARIO WHERE UserName = @pUser AND Contraseña = @pPass";
-        Usuario usuarioTraido = null;
-        using (SqlConnection db = new SqlConnection(_connectionString))
-        {
-            usuarioTraido = db.QueryFirstOrDefault<Usuario>(SQL, new { pUser = username, pPass = contraseña });
-        }
-        return usuarioTraido;
+        var resultado = db.QueryFirstOrDefault<int?>(SQL, new { pUser = username, pPass = contraseña });
 
+        if (resultado.HasValue)
+        {
+            idTraido = resultado.Value;
+        }
     }
+    return idTraido;
+}
+
  
-    public static Usuario TraerDatosUsuarioConID(string id)
+    public static Usuario TraerDatosUsuarioConID(int id)
     {
         string SQL = "SELECT * FROM Usuario WHERE ID = @pId";
         Usuario usuarioTraido = null;

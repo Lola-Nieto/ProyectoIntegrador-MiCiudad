@@ -74,10 +74,10 @@ public class Account : Controller {
 
             return View("Index", "Home");
         }
-        public Usuario ValidacionLogIn(string usuario, string pass)
+        public int ValidacionLogIn(string usuario, string pass)
         {
-            Usuario usuarioLogueado = BD.TraerDatosUsuario(usuario, pass); 
-            return Json(usuarioLogueado);
+            int idUsuario = BD.TraerIdUsuario(usuario, pass); 
+            return idUsuario;
         }
 
         public bool ExisteClienteRegistro(int Dni){
@@ -105,8 +105,8 @@ public class Account : Controller {
         */
         
         [HttpPost] 
-        public ActionResult TraerDatos(Usuario vecino){
-       
+        public ActionResult TraerDatos(int idVecino){
+            Usuario vecino = BD.TraerDatosUsuarioConID(idVecino);
             //UsuarioLogueado uLogueado = new UsuarioLogueado(vecino.UserName, vecino.Contraseña);
             string ulog = vecino.ToString();
             HttpContext.Session.SetString("user", ulog);
