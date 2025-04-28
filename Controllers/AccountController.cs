@@ -107,11 +107,21 @@ public class Account : Controller {
         [HttpPost] 
         public ActionResult TraerDatos(int idVecino){
             Usuario vecino = BD.TraerDatosUsuarioConID(idVecino);
+            var serializedObject = JsonConvert.SerializeObject(vecino);
+            HttpContext.Session.SetString("vecino", serializedObject); //dotnet add package Newtonsoft.Json
+
+             
+
             //UsuarioLogueado uLogueado = new UsuarioLogueado(vecino.UserName, vecino.Contraseña);
-            string ulog = vecino.ToString();
-            HttpContext.Session.SetString("user", ulog);
             return RedirectToAction("Index", "Home");
         } //Hacer bien esto!!!!!!!!
+
+/*
+var serializedObject = HttpContext.Session.GetString("vecino");
+
+        // Deserialize the JSON string back to an object
+            var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
+*/
 
         public bool EstaLogeado(){
             bool ret = false;
