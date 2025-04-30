@@ -197,7 +197,8 @@ function ValidarLogIn(){
             },
             error: function(xhr, status, error) {
                 console.error("Error en AJAX:", error);
-            }
+                }
+            
         });
+        }
     }
-}

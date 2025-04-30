@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ObjectPool;
 using ProyectoIntegrador_MiCiudad.Models;
 using ProyectoIntegrador_MiCiudad.Models.ModelsViews;
+using Newtonsoft.Json;
 
 
 namespace ProyectoIntegrador_MiCiudad.Controllers;
@@ -74,9 +75,11 @@ public class Account : Controller {
 
             return View("Index", "Home");
         }
+        [HttpGet] 
         public int ValidacionLogIn(string usuario, string pass)
         {
             int idUsuario = BD.TraerIdUsuario(usuario, pass); 
+            
             return idUsuario;
         }
 
