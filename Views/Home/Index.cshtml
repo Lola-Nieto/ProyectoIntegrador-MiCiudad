@@ -1,61 +1,111 @@
 @{
     ViewData["Title"] = "Home - MiCiudad";
-    
 }
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiCiudad</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        
-    </header>
-    
-    <section class="hero">
-        <img src="@Url.Content("~/img/logo2.png")" alt="MiCiudad - Vecinos conectados, ciudades unidas" class="hero-logo">
-    </section>
+<link href="https://fonts.googleapis.com/css2?family=Unica+One&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <section class="info">
-        <div class="card">
-            <h3>Misión</h3>
-            <p>Mejorar la vida de los ciudadanos otorgándoles herramientas que faciliten la comunicación y colaboración dentro de las ciudades.</p>
-        </div>
-        <div class="card">
-            <h3>Visión</h3>
-            <p>Que estas facilidades se apliquen en todas las ciudades del mundo.</p>
-        </div>
-        <div class="card">
-            <h3>Valores</h3>
-            <ul>
-                <li>Comunicación accesible</li>
-                <li>Confianza</li>
-                <li>Autenticidad</li>
-                <li>Responsabilidad</li>
-                <li>Comodidad</li>
-            </ul>
-        </div>
-    </section>
+<style>
+    body {
+        font-family: 'Unica One', cursive;
+        background-color: #0b0c3c;
+        color: white;
+        text-align: center;
+        margin: 0;
+    }
+    .hero {
+        padding: 2rem;
+    }
+    .hero img {
+        max-width: 400px;
+    }
+    .slogan {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        color: #1ed828;
+    }
+    .info {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 2rem;
+    }
+    .card {
+        background: white;
+        color: #1513c3;
+        padding: 1.5rem;
+        border-radius: 10px;
+        width: 250px;
+    }
+    .map {
+        margin: 2rem;
+        height: 400px;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    .services {
+        margin: 2rem;
+    }
+    .services h2 {
+        color: #1ed828;
+    }
+    .services-links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .services-links a {
+        text-decoration: none;
+        color: #1ed828;
+        font-size: 1rem;
+    }
+</style>
 
-    <section class="map">
-        <img src="mapa.png" alt="Mapa de Buenos Aires">
-    </section>
+<section class="hero">
+    <img src="@Url.Content("~/img/logo2.png")" alt="MiCiudad - Vecinos conectados, ciudades unidas">
+</section>
 
-    <section class="services">
-        <h2>Nuestros Servicios</h2>
-        <div class="services-links">
-            <a href="#">Chats por ubicación</a>
-            <a href="#">Reportes de delitos y autos mal estacionados</a>
-            <a href="#">Diálogo con las empresas de servicios</a>
-            <a href="#">Eventos del barrio</a>
-            <a href="#">Mapa interactivo</a>
-            <a href="#">Comunicación simplificada y ágil</a>
-        </div>
-    </section>
-</body>
-</html>
+<section class="info">
+    <div class="card">
+        <h3>Misión</h3>
+        <p>Mejorar la vida de los ciudadanos otorgándoles herramientas que faciliten la comunicación y colaboración dentro de las ciudades.</p>
+    </div>
+    <div class="card">
+        <h3>Visión</h3>
+        <p>Que estas facilidades se apliquen en todas las ciudades del mundo.</p>
+    </div>
+    <div class="card">
+        <h3>Valores</h3>
+        <ul style="list-style: none; padding: 0;">
+            <li>Comunicación accesible</li>
+            <li>Confianza</li>
+            <li>Autenticidad</li>
+            <li>Responsabilidad</li>
+            <li>Comodidad</li>
+        </ul>
+    </div>
+</section>
+
+<section class="map" id="map" style="height:400px; border-radius:15px; margin: 2rem;"></section>
+
+<section class="services">
+    <h2>Nuestros Servicios</h2>
+    <div class="services-links">
+        <a href="#">Chats por ubicación</a>
+        <a href="#">Reportes de delitos y autos mal estacionados</a>
+        <a href="#">Diálogo con empresas de servicios</a>
+        <a href="#">Eventos del barrio</a>
+        <a href="#">Mapa interactivo</a>
+        <a href="#">Comunicación simplificada y ágil</a>
+    </div>
+</section>
+
+<script>
+        var map = L.map('map').setView([-34.6037, -58.3816], 12); // Buenos Aires
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+    </script>
 

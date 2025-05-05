@@ -19334,6 +19334,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\48588470\\Desktop\\Lola\\ProyectoIntegrador-MiCiudad\\Views\\Calendario\\Index.cshtml",
+      "TargetPath": "Views\\Calendario\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\48588470\\Desktop\\Lola\\ProyectoIntegrador-MiCiudad\\Views\\Account\\MiCuenta.cshtml",
       "TargetPath": "Views\\Account\\MiCuenta.cshtml",
       "FileKind": "mvc"

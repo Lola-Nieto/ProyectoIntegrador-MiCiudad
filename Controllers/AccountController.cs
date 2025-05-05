@@ -107,7 +107,6 @@ public class Account : Controller {
         } //Hacer bien esto!!!!!!!!
         */
         
-        [HttpPost] 
         public ActionResult TraerDatos(int idVecino){
             Usuario vecino = BD.TraerDatosUsuarioConID(idVecino);
             var serializedObject = JsonConvert.SerializeObject(vecino);

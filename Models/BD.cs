@@ -183,108 +183,54 @@ public static int TraerIdUsuario(string username, string contraseña)
         }
         return mailTraido; //Devuelve "" si no lo encuentra?
     }
-    public static List<Evento> ObtenerEventos(int mes, int año, string filtro)
+       public static List<Evento> ObtenerEventos()
         {
-            List<Evento> lista = new List<Evento>();
-            using (SqlConnection con = new SqlConnection(_connectionString))
+            List<Evento> eventos = new List<Evento>();
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                con.Open();
-                string query = "SELECT * FROM calendario WHERE MONTH(fecha) = @mes AND YEAR(fecha) = @año";
-                if (!string.IsNullOrEmpty(filtro)) query += " AND categoria = @filtro";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@mes", mes);
-                cmd.Parameters.AddWithValue("@año", año);
-                if (!string.IsNullOrEmpty(filtro)) cmd.Parameters.AddWithValue("@filtro", filtro);
-
+                conn.Open();
+                string query = "SELECT * FROM calendario";
+                SqlCommand cmd = new SqlCommand(query, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    Evento ev = new Evento()
+                    eventos.Add(new Evento
                     {
-                        Id = Convert.ToInt32(reader["id"]),
+                        Id = (int)reader["id"],
                         Titulo = reader["titulo"].ToString(),
                         Descripcion = reader["descripcion"].ToString(),
-                        Fecha = Convert.ToDateTime(reader["fecha"]),
+                        Fecha = (DateTime)reader["fecha"],
                         Hora = (TimeSpan)reader["hora"],
-                        Categoria = reader["categoria"].ToString(),
-                        CreadoPor = Convert.ToInt32(reader["creado_por"]),
-                        ActualizadoEn = reader["actualizado_en"] == DBNull.Value ? null : (DateTime?)reader["actualizado_en"]
-                    };
-                    lista.Add(ev);
+                        CreadoPor = (int)reader["creado_por"]
+                    });
                 }
             }
-            return lista;
-        }
-        public static Evento ObtenerEvento(int id)
-        {
-            Evento ev = null;
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                con.Open();
-                string query = "SELECT * FROM calendario WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@id", id);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    ev = new Evento()
-                    {
-                        Id = Convert.ToInt32(reader["id"]),
-                        Titulo = reader["titulo"].ToString(),
-                        Descripcion = reader["descripcion"].ToString(),
-                        Fecha = Convert.ToDateTime(reader["fecha"]),    
-                        Hora = (TimeSpan)reader["hora"],
-                        Categoria = reader["categoria"].ToString(),
-                        CreadoPor = Convert.ToInt32(reader["creado_por"]),
-                        ActualizadoEn = reader["actualizado_en"] == DBNull.Value ? null : (DateTime?)reader["actualizado_en"]
-                    };
-                }
-            }
-            return ev;
+            return eventos;
         }
 
-        public static void GuardarEvento(Evento ev)
+        public static void CrearEvento(Evento e)
         {
-            using (SqlConnection con = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                con.Open();
-                string query = "INSERT INTO calendario (titulo, descripcion, fecha, hora, categoria, creado_por) VALUES (@titulo, @desc, @fecha, @hora, @cat, @creado)";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@titulo", ev.Titulo);
-                cmd.Parameters.AddWithValue("@desc", (object)ev.Descripcion ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@fecha", ev.Fecha);
-                cmd.Parameters.AddWithValue("@hora", ev.Hora);
-                cmd.Parameters.AddWithValue("@cat", ev.Categoria);
-                cmd.Parameters.AddWithValue("@creado", ev.CreadoPor);
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        public static void ActualizarEvento(Evento ev)
-        {
-            using (SqlConnection con = new SqlConnection(_connectionString))
-            {
-                con.Open();
-                string query = "UPDATE calendario SET titulo = @titulo, descripcion = @desc, fecha = @fecha, hora = @hora, categoria = @cat, actualizado_en = @act WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(query, con);
-                cmd.Parameters.AddWithValue("@id", ev.Id);
-                cmd.Parameters.AddWithValue("@titulo", ev.Titulo);
-                cmd.Parameters.AddWithValue("@desc", (object)ev.Descripcion ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@fecha", ev.Fecha);
-                cmd.Parameters.AddWithValue("@hora", ev.Hora);
-                cmd.Parameters.AddWithValue("@cat", ev.Categoria);
-                cmd.Parameters.AddWithValue("@act", ev.ActualizadoEn ?? DateTime.Now);
+                conn.Open();
+                string query = "INSERT INTO calendario (titulo, descripcion, fecha, hora, creado_por) VALUES (@titulo, @desc, @fecha, @hora, @creadoPor)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@titulo", e.Titulo);
+                cmd.Parameters.AddWithValue("@desc", e.Descripcion);
+                cmd.Parameters.AddWithValue("@fecha", e.Fecha);
+                cmd.Parameters.AddWithValue("@hora", e.Hora);
+                cmd.Parameters.AddWithValue("@creadoPor", e.CreadoPor);
                 cmd.ExecuteNonQuery();
             }
         }
 
         public static void EliminarEvento(int id)
         {
-            using (SqlConnection con = new SqlConnection(_connectionString))
+            using (SqlConnection conn = new SqlConnection(_connectionString))
             {
-                con.Open();
+                conn.Open();
                 string query = "DELETE FROM calendario WHERE id = @id";
-                SqlCommand cmd = new SqlCommand(query, con);
+                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 cmd.ExecuteNonQuery();
             }

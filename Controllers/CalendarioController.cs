@@ -1,78 +1,42 @@
 using Microsoft.AspNetCore.Mvc;
 using ProyectoIntegrador_MiCiudad.Models;
-using ProyectoIntegrador_MiCiudad.Models.ModelsViews;
 using System;
+using Newtonsoft.Json;
 
-namespace ProyectoIntegrador_MiCiudad.Controllers
+namespace MiCiudad.Controllers
 {
-    /*
     public class CalendarioController : Controller
     {
-        public IActionResult Index(string filtro = "", int? mes = null, int? año = null)
+        public IActionResult Index()
         {
-            DateTime hoy = DateTime.Now;
-            int mesActual = mes ?? hoy.Month;
-            int añoActual = año ?? hoy.Year;
+             //dotnet add package Newtonsoft.Json
+       //     var vecinoObjJson = HttpContext.Session.GetString("vecino", serializedObject);
+        //    var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
 
-            ViewBag.Mes = mesActual;
-            ViewBag.Año = añoActual;
-            ViewBag.Filtro = filtro;
-
-            ViewBag.EsAdmin = UsuarioLogueado.Instancia.IsAdmin;
-            ViewBag.Eventos = BD.ObtenerEventos(mesActual, añoActual, filtro);
-
-            return View();
-        }
-
-        public IActionResult Detalle(int id)
-        {
-            var evento = BD.ObtenerEvento(id);
-            return View(evento);
-        }
-
-        public IActionResult Crear()
-        {
-            if (!UsuarioLogueado.Instancia.IsAdmin) return RedirectToAction("Index");
+            ViewBag.EsAdmin = HttpContext.Session.GetInt32("isAdmin") == 1;
+            ViewBag.Eventos = BD.ObtenerEventos();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Crear(Evento evento)
+        public IActionResult Crear(Evento nuevoEvento)
         {
-            if (!UsuarioLogueado.Instancia.IsAdmin) return RedirectToAction("Index");
+            if (HttpContext.Session.GetInt32("isAdmin") != 1)
+                return Unauthorized();
 
-            evento.CreadoPor = UsuarioLogueado.Instancia.Id;
-            evento.Fecha = evento.Fecha.Date + evento.Hora;
-            BD.GuardarEvento(evento);
-
+            nuevoEvento.CreadoPor = HttpContext.Session.GetInt32("userId") ?? 0;
+            BD.CrearEvento(nuevoEvento);
             return RedirectToAction("Index");
-        }
-
-        public IActionResult Editar(int id)
-        {
-            if (!UsuarioLogueado.Instancia.IsAdmin) return RedirectToAction("Index");
-            var evento = BD.ObtenerEvento(id);
-            return View(evento);
         }
 
         [HttpPost]
-        public IActionResult Editar(Evento evento)
-        {
-            if (!UsuarioLogueado.Instancia.IsAdmin) return RedirectToAction("Index");
-            evento.ActualizadoEn = DateTime.Now;
-            BD.ActualizarEvento(evento);
-            return RedirectToAction("Index");
-        }
-
         public IActionResult Eliminar(int id)
         {
-            if (UsuarioLogueado.Instancia.IsAdmin)
-            {
-                BD.EliminarEvento(id);
-            }
+            if (HttpContext.Session.GetInt32("isAdmin") != 1)
+                return Unauthorized();
+
+            BD.EliminarEvento(id);
             return RedirectToAction("Index");
         }
     }
-
-    */
 }
