@@ -18,10 +18,15 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        if(HttpContext.Session.GetString("user") != null){
+        if(HttpContext.Session.GetString("vecino") != null){
          var reciboUsuario = TempData["Usuario"] as Usuario;
         TempData["Usuario"] = reciboUsuario;   
         }
+
+        var serializedObject = HttpContext.Session.GetString("vecino");
+
+        // Deserialize the JSON string back to an object
+            var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
         
         return View();
     }

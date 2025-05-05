@@ -29,7 +29,7 @@
                 <li><a href="#">Reportes</a></li>
                 <li><a asp-controller="Calendario" asp-action="Index">Calendario</a></li>
             </ul>
-            @if(Context.Session.GetString("user") != null){
+            @if(Context.Session.GetString("vecino") != null){
                 <a class="login-btn" href='@Url.Action("MiCuenta", "Account")'>MiCuenta</a>
             }else{
                 <a class="login-btn" href='@Url.Action("LogIn", "Account")'>Iniciar Sesión</a>

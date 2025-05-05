@@ -9,7 +9,7 @@ namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD
 {
-    private static string _connectionString = @"Server=.;Database=MiCiudad; Trusted_Connection=true; ";
+    private static string _connectionString = @"Server=A-PHZ2-CIDI-47;Database=MiCiudad; Trusted_Connection=true; TrustServerCertificate=True";
 
 
     public static void AgregarVecino(Usuario userAAgregar)
