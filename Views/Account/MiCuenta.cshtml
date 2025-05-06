@@ -18,13 +18,17 @@
 </header>
 
 <div>
-    <p> Nombre: @Usuario.Nombre </p> 
+@if(Usuario != null){
+<p> Nombre: @Usuario.Nombre </p> 
     <p> Apellido: @Usuario.Apellido </p> 
     <p> Username: @Usuario.UserName </p> 
     <p> Dirección: @Usuario.Calle @Usuario.Altura </p> 
     <p> Mail: @Usuario.Mail </p> 
+}
+    
 
 </div>
+<p> Error: @ViewBag.error </p> 
  <a href = '@Url.Action("Logout", "Account")' class="chau">Cerra Sesión</a>       
 
        

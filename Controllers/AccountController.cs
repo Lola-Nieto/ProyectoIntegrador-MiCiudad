@@ -44,8 +44,12 @@ public class Account : Controller {
             var serializedObject = HttpContext.Session.GetString("vecino");
 
             Usuario vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
-
-            ViewBag.Usuario = vecino;   
+            if(vecino != null){
+                ViewBag.Usuario = vecino; 
+            }else{
+                ViewBag.error = "Vecino es null";
+            }
+              
 
             return View();
         }
