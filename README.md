@@ -11,3 +11,5 @@ https://www.twilio.com/en-us/blog/distribute-sessions-in-aspdotnet-core#:~:text=
 Falta crear el usuario en el olvide contraseña 
 
 No actualiza el DNI cuando llamo por segunda vez al js en la validación del Registro (si quiero modificar el dni)
+
+https://techriders.tajamar.es/diferencia-entre-viewdataviewbagtempdata-y-session/ --> Uso de tempdata, viewbag y más

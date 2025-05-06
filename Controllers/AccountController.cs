@@ -40,8 +40,13 @@ public class Account : Controller {
             return View();
         }
         public ActionResult MiCuenta(){
-             var reciboUsuario = TempData["Usuario"] as Usuario;
-            TempData["Usuario"] = reciboUsuario;   
+
+            var serializedObject = HttpContext.Session.GetString("vecino");
+
+            Usuario vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
+
+            ViewBag.Usuario = vecino;   
+
             return View();
         }
         public IActionResult Logout()
