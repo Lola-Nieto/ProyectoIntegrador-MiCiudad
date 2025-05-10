@@ -17,22 +17,33 @@ public class HomeController : Controller
     {
         _logger = logger;
     }
-
     public IActionResult Index()
-    {
-       /* if(HttpContext.Session.GetString("vecino") != null){
+{
+     /* if(HttpContext.Session.GetString("vecino") != null){
          var reciboUsuario = TempData["Usuario"] as Usuario;
         TempData["Usuario"] = reciboUsuario;   
         }
     */
+    try
+    {
         var serializedObject = HttpContext.Session.GetString("vecino");
 
-        // Deserialize the JSON string back to an object
-            
-        if(serializedObject != null){
-        var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
-        TempData["Usuario"] = vecino;   
+        if (!string.IsNullOrEmpty(serializedObject))
+        {
+            var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
+            TempData["Usuario"] = vecino;
         }
-        return View();
     }
+    catch (Exception ex)
+    {
+        // Podés loguearlo si usás logger
+        TempData["Error"] = "Error al cargar los datos del usuario.";
+    }
+
+    return View();
 }
+
+
+}
+
+

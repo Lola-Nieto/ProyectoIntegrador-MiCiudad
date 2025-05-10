@@ -137,7 +137,6 @@ function ValidarUsuarioEscrito(username){
          let errorUsuario = document.getElementById('mostrarError');
          errorUsuario.innerHTML = "El ingreso de usuario es requerido";
     }
-    alert('El usuario está escrito: ' + ret);
     return ret;
 }
 
@@ -190,7 +189,7 @@ function ValidarLogIn(){
             success: function(response) {
                 console.log(response);
                 if (response != -1) {
-                    window.location.href = '/Account/TraerDatos?id=' + response; 
+                    window.location.href = '/Account/TraerDatos?idVecino=' + response; 
                 } else {
                     document.getElementById('mostrarError').innerHTML = "Usuario y/o contraseña incorrectos";
                 }

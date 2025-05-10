@@ -1,6 +1,7 @@
 @{
     ViewData["Title"] = "Calendario";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var admin = ViewBag.EsAdmin;
 }
 
 <style>
@@ -204,7 +205,8 @@
     </div>
 </div>
 
-<div class="modal" id="event-modal">
+@if(admin == 1){
+    <div class="modal" id="event-modal">
     <div class="modal-content">
         <h3>Agregar Evento</h3>
         <input type="text" id="event-title" placeholder="Título del evento" />
@@ -220,6 +222,7 @@
         <button onclick="addEvent()">Guardar</button>
     </div>
 </div>
+}
 
 <div class="event-info" id="event-info">
     <h3>Eventos del <span id="info-date"></span></h3>
