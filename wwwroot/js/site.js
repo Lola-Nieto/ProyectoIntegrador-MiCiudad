@@ -188,9 +188,13 @@ function ValidarLogIn(){
             dataType: 'json', 
             success: function(response) {
                 console.log(response);
-                if (response != -1) {
+              /*  if (response != -1) {
                     window.location.href = '/Account/TraerDatos?idVecino=' + response; 
-                } else {
+                }*/
+                if (response != -1) {
+                    window.location.href = '/Home/Index'; // No necesitás pasar el id
+                }
+                else {
                     document.getElementById('mostrarError').innerHTML = "Usuario y/o contraseña incorrectos";
                 }
             },

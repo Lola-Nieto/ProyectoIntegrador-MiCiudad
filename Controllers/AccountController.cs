@@ -88,8 +88,13 @@ public class Account : Controller {
         public int ValidacionLogIn(string usuario, string pass)
         {
             int idUsuario = BD.TraerIdUsuario(usuario, pass); 
-            
-            return idUsuario;
+            if (idUsuario != -1)
+                {
+                    HttpContext.Session.SetInt32("idUsuario", idUsuario);
+
+                }
+
+                return idUsuario;
         }
 
         public bool ExisteClienteRegistro(int Dni){
@@ -121,7 +126,7 @@ public class Account : Controller {
             var serializedObject = JsonConvert.SerializeObject(vecino);
             HttpContext.Session.SetString("vecino", serializedObject); //dotnet add package Newtonsoft.Json
 
-             
+
 
             //UsuarioLogueado uLogueado = new UsuarioLogueado(vecino.UserName, vecino.Contraseña);
             return RedirectToAction("Index", "Home");

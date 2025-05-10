@@ -13,11 +13,12 @@ namespace MiCiudad.Controllers
         //dotnet add package Newtonsoft.Json --> en la consola para que el paquete funcione
        try
         {
-            var serializedObject = HttpContext.Session.GetString("vecino");
-                
-            if (!string.IsNullOrEmpty(serializedObject))
+           // var serializedObject = HttpContext.Session.GetString("vecino");
+             var idUsuario = HttpContext.Session.GetInt32("idUsuario");
+
+            if (idUsuario.HasValue)
             {
-                var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
+                var vecino = BD.TraerDatosUsuarioConID(idUsuario.Value);
                 ViewBag.EsAdmin = vecino.IsAdmin;
 
             }
@@ -36,20 +37,25 @@ namespace MiCiudad.Controllers
         [HttpPost]
         public IActionResult Crear(Evento nuevoEvento) //Se crea el obj evento? Sino se crea no le llega nada
         {
-            var serializedObject = HttpContext.Session.GetString("vecino");
-            var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
 
-            nuevoEvento.CreadoPor = vecino.ID;
-            BD.CrearEvento(nuevoEvento);
+             var idUsuario = HttpContext.Session.GetInt32("idUsuario");
+            if(idUsuario.HasValue){
+                nuevoEvento.CreadoPor = idUsuario;
+                BD.CrearEvento(nuevoEvento);
+                
+            }
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult Eliminar(int id)
         {
-            var serializedObject = HttpContext.Session.GetString("vecino");
-            var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
-            if (vecino.IsAdmin != 1)
+            var idUsuario = HttpContext.Session.GetInt32("idUsuario");
+            if (idUsuario.HasValue)
+            {
+                var vecino = BD.TraerDatosUsuarioConID(idUsuario.Value);
+            }
+            if (!vecino.IsAdmin)
                 return Unauthorized();
 
             BD.EliminarEvento(id);

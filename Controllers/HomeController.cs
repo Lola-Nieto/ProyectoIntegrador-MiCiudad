@@ -18,30 +18,33 @@ public class HomeController : Controller
         _logger = logger;
     }
     public IActionResult Index()
-{
-     /* if(HttpContext.Session.GetString("vecino") != null){
-         var reciboUsuario = TempData["Usuario"] as Usuario;
-        TempData["Usuario"] = reciboUsuario;   
-        }
-    */
-    try
     {
-        var serializedObject = HttpContext.Session.GetString("vecino");
+        /* if(HttpContext.Session.GetString("vecino") != null){
+            var reciboUsuario = TempData["Usuario"] as Usuario;
+            TempData["Usuario"] = reciboUsuario;   
+            }
+        */
+     
 
-        if (!string.IsNullOrEmpty(serializedObject))
+        try
         {
-            var vecino = JsonConvert.DeserializeObject<Usuario>(serializedObject);
-            TempData["Usuario"] = vecino;
+           
+            var idUsuario = HttpContext.Session.GetInt32("idUsuario");
+            if (idUsuario.HasValue)
+            {
+                var vecino = BD.TraerDatosUsuarioConID(idUsuario.Value);
+                TempData["Usuario"] = vecino;
+            }
         }
-    }
-    catch (Exception ex)
-    {
-        // Podés loguearlo si usás logger
-        TempData["Error"] = "Error al cargar los datos del usuario.";
-    }
+        catch (Exception ex)
+        {
+            // Podés loguearlo si usás logger
+            System.IO.File.WriteAllText("error_log.txt", ex.ToString());
+            TempData["Error"] = "Error al cargar los datos del usuario.";
+        }
 
-    return View();
-}
+        return View();
+    }
 
 
 }
