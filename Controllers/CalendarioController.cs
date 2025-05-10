@@ -40,7 +40,7 @@ namespace MiCiudad.Controllers
 
              var idUsuario = HttpContext.Session.GetInt32("idUsuario");
             if(idUsuario.HasValue){
-                nuevoEvento.CreadoPor = idUsuario;
+                nuevoEvento.CreadoPor = (int)idUsuario;
                 BD.CrearEvento(nuevoEvento);
                 
             }
@@ -54,11 +54,12 @@ namespace MiCiudad.Controllers
             if (idUsuario.HasValue)
             {
                 var vecino = BD.TraerDatosUsuarioConID(idUsuario.Value);
-            }
-            if (!vecino.IsAdmin)
+                 if (!vecino.IsAdmin)
                 return Unauthorized();
 
             BD.EliminarEvento(id);
+            }
+           
             return RedirectToAction("Index");
         }
     }

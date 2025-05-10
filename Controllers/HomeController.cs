@@ -32,7 +32,8 @@ public class HomeController : Controller
             var idUsuario = HttpContext.Session.GetInt32("idUsuario");
             if (idUsuario.HasValue)
             {
-                var vecino = BD.TraerDatosUsuarioConID(idUsuario.Value);
+                Usuario vecino = BD.TraerDatosUsuarioConID(idUsuario.Value);
+                if(vecino != null)
                 TempData["Usuario"] = vecino;
             }
         }

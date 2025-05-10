@@ -1,7 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
 
-
+@{
+    var id = Context.Session.GetInt32("idUsuario");
+}
 
 <head>
      
@@ -26,7 +28,7 @@
                 <li><a href="#">Reportes</a></li>
                 <li><a href="@Url.Action("Index", "Calendario")">Calendario</a></li>
             </ul>
-            @if(Context.Session.GetString("vecino") != null){
+            @if(id != null){
                 <a class="login-btn" href='@Url.Action("MiCuenta", "Account")'>MiCuenta</a>
             }else{
                 <a class="login-btn" href='@Url.Action("LogIn", "Account")'>Iniciar Sesión</a>
