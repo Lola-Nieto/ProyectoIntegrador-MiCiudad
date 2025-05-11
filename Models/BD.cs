@@ -9,7 +9,7 @@ namespace ProyectoIntegrador_MiCiudad.Models;
 
 public static class BD
 {
-    private static string _connectionString = @"Server=.;Database=MiCiudad; Trusted_Connection=true; TrustServerCertificate=True";
+    private static string _connectionString = @"Server=DESKTOP-GRSURRQ\SQLEXPRESS;Database=MiCiudad; Trusted_Connection=true; TrustServerCertificate=True";
 
 
     public static void AgregarVecino(Usuario userAAgregar)
@@ -87,6 +87,33 @@ public static int TraerIdUsuario(string username, string contraseña)
         }
     }
     return idTraido;
+}
+
+public static List<Reporte> ObtenerReportes()
+{
+    string SQL = "SELECT ID, idUsuario, Hora, Dia, Tipo, Direccion, Descripcion FROM REPORTES";
+    using (SqlConnection db = new SqlConnection(_connectionString))
+    {
+        return db.Query<Reporte>(SQL).ToList();
+    }
+}
+
+
+public static void GuardarReporte(Reporte reporte)
+{
+    using (SqlConnection con = new SqlConnection(_connectionString))
+    {
+        con.Open();
+        string query = "INSERT INTO REPORTES (IdUsuario, Tipo, Direccion, Descripcion, Dia, Hora) VALUES (@idUsuario, @tipo, @direccion, @descripcion, @dia, @hora)";
+        SqlCommand cmd = new SqlCommand(query, con);
+        cmd.Parameters.AddWithValue("@idUsuario", reporte.IdUsuario);
+        cmd.Parameters.AddWithValue("@tipo", reporte.Tipo);
+        cmd.Parameters.AddWithValue("@direccion", reporte.Direccion);
+        cmd.Parameters.AddWithValue("@descripcion", reporte.Descripcion);
+        cmd.Parameters.AddWithValue("@dia", reporte.Dia);
+        cmd.Parameters.AddWithValue("@hora", reporte.Hora);
+        cmd.ExecuteNonQuery();
+    }
 }
 
  
